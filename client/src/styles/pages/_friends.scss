@@ -1,0 +1,15 @@
+.friends {
+  &__container {
+    background-color: $background-color1;
+  }
+  &__friends {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__friend {
+    &-cover {
+      height: 10rem !important;
+      object-fit: cover;
+    }
+  }
+}

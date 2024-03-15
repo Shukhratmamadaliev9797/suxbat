@@ -1,0 +1,131 @@
+.messages {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  border-radius: 0.5rem;
+  background: $background-color1;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  &__receivers {
+    border-right: 1px solid #ddd;
+
+    &-title {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  &__chaters {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 80vh;
+  }
+  &__receiver {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    &-name {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      span {
+        &:first-child {
+          font-weight: bold;
+        }
+      }
+    }
+    cursor: pointer;
+    &-img {
+      width: 3rem;
+      height: 3rem;
+      margin-right: 1rem;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+  &__chatBox {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 75vh;
+    padding: 2rem;
+  }
+  &__sender {
+    display: flex;
+    margin-bottom: 1rem;
+
+    &-img {
+      width: 3rem;
+      height: 3rem;
+      margin-right: 0.5rem;
+    }
+    &-message {
+      max-width: 60%;
+    }
+    &-messageContent {
+      border: 1px solid #ddd;
+      border-radius: 2rem;
+      padding: 1rem;
+    }
+    span {
+      font-size: 1rem;
+    }
+  }
+  &__me {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: end;
+    &-img {
+      width: 3rem;
+      height: 3rem;
+    }
+    &-message {
+      margin-right: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      max-width: 60%;
+    }
+    &-messageContent {
+      background: linear-gradient(
+        266deg,
+        rgb(52, 113, 97) 0%,
+        rgb(9, 112, 83) 96%,
+        rgb(27, 91, 73) 100%
+      );
+      border: 1px solid #ddd;
+      border-radius: 2rem;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    span {
+      font-size: 1rem;
+    }
+  }
+  &__chat {
+    &-input {
+      display: grid;
+      grid-template-columns: 90% 10%;
+      input {
+        padding: 1rem;
+        border: none;
+        border-top: 1px solid #ddd;
+      }
+      button {
+        background: $geekblue-3;
+        color: $white;
+      }
+    }
+  }
+  &__noChat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    span {
+      border: 1px solid #ddd;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+    }
+  }
+}

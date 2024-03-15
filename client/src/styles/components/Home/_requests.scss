@@ -1,0 +1,69 @@
+.home {
+  &__requests {
+    background-color: $white;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    margin-left: 1rem;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid $seperator-color;
+    }
+    &-requests {
+      padding: 1rem;
+    }
+    &-request {
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      &-img {
+        display: flex;
+        align-items: center;
+        img {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          margin-right: 0.5rem;
+        }
+      }
+      &-name {
+        display: flex;
+        flex-direction: column;
+        margin-right: 6rem;
+        @media only screen and (max-width: "1550px") {
+          margin-right: 3rem;
+        }
+        span {
+          &:first-child {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: $text-color;
+            @media only screen and (max-width: "1250px") {
+              font-size: 0.85rem !important;
+            }
+          }
+          &:last-child {
+            color: $secondary-color;
+            font-size: 0.8rem;
+            @media only screen and (max-width: "1250px") {
+              font-size: 0.75rem !important;
+            }
+          }
+        }
+      }
+      &-action {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 0.5rem;
+        button {
+          &:first-child {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

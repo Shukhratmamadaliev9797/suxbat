@@ -1,0 +1,317 @@
+.createPostModal {
+  padding: 0 !important;
+  &__postBtn {
+    width: 100%;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    // background-color: $lighterPrimary-color;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__header {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    h5 {
+      text-align: center;
+    }
+  }
+  &__body {
+    padding: 1rem;
+
+    &-textareaBackground {
+    }
+    &-user {
+      display: flex;
+      align-items: center;
+      &-img {
+        width: 6%;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+      }
+      &-name {
+        img {
+          width: 25%;
+        }
+      }
+      &-privacy {
+        background-color: rgb(236, 235, 235);
+        display: inline;
+        padding: 0.2rem;
+        display: flex inline;
+        align-items: center;
+        border-radius: 0.5rem;
+        span {
+          margin: 0 0.2rem;
+        }
+      }
+    }
+    &-textareaBackground {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 25rem;
+      textarea {
+        text-align: center;
+        margin-top: 1rem;
+        color: #fff;
+        font-size: 10rem;
+        font-size: 2rem !important;
+        font-family: "Bungee", cursive;
+        padding-left: 4rem !important;
+        padding-right: 4rem !important;
+      }
+    }
+    &-textarea {
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      textarea {
+        background: transparent;
+        width: 100%;
+        font-size: 1rem;
+        border: transparent;
+        padding: 0.5rem;
+      }
+    }
+    &-emojis {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      img {
+        width: 5%;
+        height: 5%;
+      }
+      &-emojiPicker {
+        position: absolute;
+        right: 2rem;
+        z-index: 10;
+        top: 0;
+      }
+    }
+    &-backgrounds {
+      display: flex;
+
+      img {
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: 0.5rem;
+        margin-right: 0.2rem;
+        object-fit: cover;
+      }
+      &-no_bg {
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: 0.5rem;
+        margin-right: 0.2rem;
+        border: 1px solid #ddd;
+      }
+    }
+  }
+}
+
+.rs-modal-content {
+  padding: 0rem !important;
+}
+
+.addToYourPost {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  h6 {
+    font-size: 0.9rem;
+  }
+  &__icons {
+    display: flex;
+    align-items: center;
+    & > * {
+      margin: 0 0.3rem;
+    }
+  }
+}
+
+.imagePreview {
+  &__addImage {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    position: relative;
+    &-exit {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    &-add {
+      background-color: rgb(210, 207, 207);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 20rem;
+    }
+    &-icon {
+      margin-bottom: 1rem;
+    }
+  }
+  &__images {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    position: relative;
+    overflow-y: scroll;
+    max-height: 70vh;
+    z-index: 0;
+    &-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-exit {
+        right: 1.5rem;
+        top: 1.5rem;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.3rem;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 100;
+      }
+      &-editAdd {
+        display: flex;
+        position: absolute;
+        left: 1.5rem;
+        top: 1.5rem;
+        z-index: 100;
+        button {
+          display: flex;
+          align-items: center;
+          margin-right: 1rem;
+          padding: 0.3rem 0.5rem;
+          border-radius: 0.5rem;
+          i {
+            font-size: 1rem;
+            margin-right: 0.3rem;
+          }
+        }
+      }
+    }
+  }
+  &__imagePreview1 {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    overflow-x: scroll;
+    img,
+    video {
+      width: 100%;
+      height: 25rem;
+      object-fit: cover;
+    }
+  }
+  &__imagePreview2 {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.1rem;
+    img,
+    video {
+      width: 100%;
+      height: 25rem;
+      object-fit: cover;
+    }
+  }
+  &__imagePreview3 {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.1rem;
+    img,
+    video {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      &:first-child {
+        grid-column: 1/3;
+      }
+    }
+  }
+  &__imagePreview4 {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.1rem;
+    img,
+    video {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+    }
+  }
+  &__imagePreview5 {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.1rem;
+    img,
+    video {
+      width: 100%;
+      height: 15rem;
+      object-fit: cover;
+      &:nth-child(3) {
+        grid-column: 1/3;
+      }
+    }
+  }
+  &__imagePreview6 {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.1rem;
+    img,
+    video {
+      width: 100%;
+      height: 15rem;
+      object-fit: cover;
+    }
+  }
+  &__singleGridImage {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.1rem;
+    img,
+    video {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      &:first-child {
+        grid-column: 1/3;
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+.uploadImage {
+  &__oldImages {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    img {
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+      width: 7%;
+      height: 3.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+  &__body {
+    padding: 1rem;
+  }
+  &__text {
+    width: 100%;
+    margin-bottom: 1rem;
+    textarea {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid #ddd;
+      padding: 1rem;
+    }
+  }
+  &__cropBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      span {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+  &__Btns {
+    padding: 1rem 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    &-active {
+      // border: 1px solid $lighterPrimary-color !important;
+    }
+    button {
+      padding: 0.3rem 0.5rem;
+      width: 100%;
+
+      border: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:first-child {
+        border-right: none;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+      }
+      &:last-child {
+        border-left: none;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+      }
+    }
+  }
+  &__zoomRange {
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 55%;
+      height: 4px;
+      background: #ddd;
+      margin: 0 1rem;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      outline: none;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+  }
+  &__image {
+    min-height: 20rem;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  &__imageCropper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 20rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}

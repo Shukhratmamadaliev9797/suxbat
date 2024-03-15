@@ -1,0 +1,208 @@
+.register {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  width: 100%;
+  height: 100vh;
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    background: url("../../images/register.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: $geekblue-1;
+    @media only screen and (max-width: 1000px) {
+      display: none;
+    }
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 1rem auto;
+    img {
+      width: 8rem;
+    }
+    span {
+      color: $geekblue-3;
+      font-weight: 900;
+
+      font-size: 2rem;
+    }
+  }
+  &__form {
+    &-btn {
+      margin: 1rem 0;
+      button {
+        background-color: $geekblue-3;
+        width: 100%;
+        color: $white;
+        border-radius: 0.3rem;
+        font-size: 1rem;
+        border: none;
+      }
+    }
+    &-action {
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      span {
+        margin-left: 0.5rem;
+      }
+    }
+    &-radioBox {
+      position: relative;
+      margin-bottom: 0.5rem;
+      label {
+        display: block;
+        color: $text-color;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+      &-radio {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+        @media only screen and (max-width: 400px) {
+          grid-gap: 0.5rem;
+        }
+        label {
+          padding: 8px 11px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          display: flex;
+          background: #fff;
+          @media only screen and (max-width: 992px) {
+            padding: 4px 11px;
+          }
+          @media only screen and (max-width: 400px) {
+            font-size: 0.9rem;
+          }
+          @media only screen and (max-width: 350px) {
+            font-size: 0.8rem;
+            padding: 8.1px 11px;
+          }
+
+          input {
+            margin-left: 1rem;
+            @media only screen and (max-width: 450px) {
+              margin-left: 0.5rem;
+            }
+            @media only screen and (max-width: 400px) {
+              margin-left: 0.1rem;
+            }
+          }
+        }
+      }
+    }
+    &-login {
+      margin: 2rem;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      @media only screen and (max-width: 750px) {
+        margin: 0 1rem 0 0;
+      }
+      a {
+        background: #407bff;
+        color: #fff;
+        padding: 0.8rem 1.5rem;
+        border-radius: 1.5rem;
+        &:hover {
+          color: #fff;
+        }
+        @media only screen and (max-width: 1200px) {
+          padding: 0.5rem 1.2rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+    &-logo {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      margin: 1rem auto;
+      img {
+        width: 6rem;
+      }
+      span {
+        color: #407bff;
+        font-size: 1.8rem;
+      }
+      @media only screen and (min-width: 1000px) {
+        display: none;
+      }
+      @media only screen and (max-width: 750px) {
+        img {
+          width: 6rem;
+        }
+        span {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    &-selectBox {
+      position: relative;
+      margin-bottom: 0.5rem;
+      label {
+        display: block;
+        color: $text-color;
+        font-size: 0.9rem;
+      }
+
+      select {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 0.3rem;
+      }
+    }
+    &-selectContainer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 1rem;
+      @media only screen and (max-width: 400px) {
+        grid-gap: 0.5rem;
+      }
+    }
+
+    &-box {
+      width: 55%;
+      margin: 5rem auto;
+
+      @media only screen and (max-width: 1500px) {
+        width: 45%;
+      }
+      @media only screen and (max-width: 1400px) {
+        width: 55%;
+      }
+      @media only screen and (max-width: 1200px) {
+        width: 60%;
+        margin: 5rem auto;
+      }
+      @media only screen and (max-width: 750px) {
+        width: 65%;
+        margin: 3rem auto;
+      }
+      @media only screen and (max-width: 600px) {
+        width: 75%;
+        margin: 3rem auto;
+      }
+      @media only screen and (max-width: 500px) {
+        width: 80%;
+        margin: 2rem auto;
+      }
+    }
+    &-inputRow {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+      @media only screen and (max-width: 1200px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+}

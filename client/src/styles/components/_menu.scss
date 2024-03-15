@@ -1,0 +1,50 @@
+.menu {
+  position: absolute;
+  width: 50%;
+  // background-color: $white-color;
+  right: 0;
+  top: 6.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: 0.3s linear;
+  &-active {
+    visibility: visible;
+    opacity: 1;
+  }
+  &-inactive {
+    visibility: hidden;
+    opacity: 0;
+  }
+  &-title {
+    // color: $lighter-color;
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: "Paytone One", sans-serif;
+    margin-bottom: 1rem;
+  }
+  &-item {
+    padding: 1rem;
+    transition: 0.5s linear;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: #eee;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      span {
+        margin-left: 1rem;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #eeeeee;
+        padding: 0.5rem;
+      }
+    }
+  }
+}

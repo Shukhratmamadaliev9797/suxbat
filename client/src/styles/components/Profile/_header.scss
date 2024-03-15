@@ -1,0 +1,198 @@
+.profile {
+  &__navbar {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    li {
+      margin-right: 4rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 1rem;
+      span {
+        cursor: pointer;
+        color: #494949;
+      }
+    }
+  }
+  &__header {
+    background: #fff;
+    padding: 1rem 1rem 0;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    &-friendship {
+      &-friendsMenu {
+        position: absolute;
+        background: #fff;
+        width: 10rem;
+        border-radius: 0.5rem;
+        right: 11.8rem;
+        bottom: -6.5rem;
+        z-index: 10;
+        border: 1px solid #ddd;
+        overflow: hidden;
+        li {
+          display: flex;
+          padding: 0.7rem 1rem;
+          align-items: center;
+          cursor: pointer;
+          span {
+            margin-left: 0.5rem;
+          }
+          a {
+          }
+          &:hover {
+            background: #edecec;
+          }
+          &:last-child {
+            border-top: 1px solid #ddd;
+          }
+        }
+      }
+    }
+    &-cover {
+      width: 100%;
+      // height: 350px;
+      border-radius: 0.5rem;
+      // overflow: hidden;
+
+      position: relative;
+      &-saveCancelBtn {
+        z-index: 10;
+        position: absolute;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 0.3rem;
+        top: 0.5rem;
+        padding: 0 0.5rem;
+        button {
+          width: 100%;
+          height: 100%;
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          color: #fff;
+          background: rgba($color: #000000, $alpha: 0.3);
+        }
+      }
+      img {
+        width: 100%;
+        border-radius: 0.5rem;
+        object-fit: cover;
+      }
+      &-changeBtn {
+        position: absolute;
+        right: 2rem;
+        bottom: 2rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        color: #fff;
+        background: rgba($color: #000000, $alpha: 0.3);
+        span {
+          margin-left: 0.3rem;
+        }
+      }
+      &-options {
+        position: absolute;
+        background: #fff;
+        width: 15rem;
+        border-radius: 0.5rem;
+        right: 2rem;
+        bottom: -7.2rem;
+        z-index: 10;
+        border: 1px solid #ddd;
+        overflow: hidden;
+        li {
+          display: flex;
+          padding: 0.7rem 1rem;
+          align-items: center;
+          cursor: pointer;
+          span {
+            margin-left: 0.5rem;
+          }
+          a {
+          }
+          &:hover {
+            background: #edecec;
+          }
+          &:last-child {
+            border-top: 1px solid #ddd;
+          }
+        }
+      }
+    }
+    &-user {
+      transform: translateY(-2rem);
+      display: grid;
+      grid-template-columns: 15% 85%;
+      @media only screen and (max-width: 1700px) {
+        grid-template-columns: 17% 83%;
+      }
+      &-imgChange {
+        font-size: 1rem;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #ddd;
+        position: absolute;
+        right: 0.2rem;
+        bottom: 0.4rem;
+        border: 2px solid #fff;
+      }
+      &-img {
+        position: relative;
+        width: 8rem;
+        height: 8rem;
+        margin-left: 2rem;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border: 0.4rem solid #fff;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      &-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        width: 100%;
+        transform: translateY(-0.5rem);
+      }
+      &-action {
+        display: flex;
+
+        button {
+          &:first-child {
+            padding: 0.8rem;
+            display: flex;
+            align-items: center;
+            border-radius: 0.5rem;
+            span {
+              margin-left: 0.3rem;
+            }
+          }
+          &:nth-child(2) {
+            border-radius: 0.5rem;
+            padding: 0.8rem;
+            margin-left: 1rem;
+            span {
+              margin-left: 0.3rem;
+            }
+          }
+          &:nth-child(3) {
+            border-radius: 0.5rem;
+            padding: 0.8rem;
+            margin-left: 1rem;
+            span {
+              margin-left: 0.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

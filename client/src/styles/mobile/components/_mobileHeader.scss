@@ -1,0 +1,24 @@
+.mobileHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 0.5rem;
+  position: fixed;
+  z-index: 20;
+  &__logo {
+    display: flex;
+    align-items: center;
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+    span {
+      color: #407bff;
+      font-family: "Bungee", cursive;
+      font-size: 2rem;
+    }
+  }
+}

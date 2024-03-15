@@ -1,0 +1,30 @@
+.home {
+  display: grid;
+  grid-template-columns: 72% 30%;
+  @media only screen and (max-width: "1550px") {
+    grid-template-columns: 73% 25%;
+  }
+  @media only screen and (max-width: "1530px") {
+    grid-template-columns: 71% 25%;
+  }
+  @media only screen and (max-width: "1200px") {
+    grid-template-columns: 100%;
+  }
+  &__main {
+    margin-right: 2rem;
+    @media only screen and (max-width: "800px") {
+      margin: 0;
+    }
+  }
+  &__right {
+    padding-right: 1rem;
+    position: fixed;
+    right: 0;
+    top: 7rem;
+    height: 90vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none;
+  }
+}

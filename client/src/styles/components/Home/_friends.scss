@@ -1,0 +1,79 @@
+.home {
+  &__friends {
+    background-color: $white;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid $seperator-color;
+    }
+    &-friends {
+      padding: 1rem;
+    }
+    &-friend {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: $background-color;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      &-img {
+        display: flex;
+        align-items: center;
+        img {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          margin-right: 0.5rem;
+        }
+      }
+      &-name {
+        display: flex;
+        flex-direction: column;
+        margin-right: 3rem;
+        @media only screen and (max-width: "1550px") {
+          margin-right: 1rem;
+        }
+        @media only screen and (max-width: "1250px") {
+          font-size: 0.8rem;
+        }
+        span {
+          &:first-child {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: $text-color;
+            @media only screen and (max-width: "1250px") {
+              font-size: 0.85rem !important;
+            }
+          }
+          &:last-child {
+            color: $secondary-color;
+            font-size: 0.8rem;
+            @media only screen and (max-width: "1250px") {
+              font-size: 0.75rem !important;
+            }
+          }
+        }
+      }
+      &-action {
+        background-color: $geekblue-3;
+        color: $white;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media only screen and (max-width: "1450px") {
+          display: none;
+        }
+      }
+    }
+  }
+}

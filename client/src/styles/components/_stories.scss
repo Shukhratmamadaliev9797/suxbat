@@ -1,0 +1,74 @@
+.swiper {
+  width: 100%;
+  height: 13rem;
+}
+
+.swiper-slide {
+  position: relative;
+  // background: $white-color;
+  height: 100px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  &::after {
+    -webkit-box-shadow: inset 3px -49px 98px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 3px -49px 98px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 3px -49px 98px -10px rgba(0, 0, 0, 0.75);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.stories {
+  @media only screen and (max-width: "800px") {
+    margin-left: 1rem !important;
+  }
+}
+.story {
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.2px);
+  -webkit-backdrop-filter: blur(4.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  &__account {
+    z-index: 10;
+    position: absolute;
+    top: 9rem;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-50%);
+    color: #fff;
+    width: 100%;
+    .add-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #6c6a6a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+    }
+    img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+    span {
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+  }
+}

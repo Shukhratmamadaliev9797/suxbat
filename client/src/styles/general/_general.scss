@@ -1,0 +1,54 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif !important;
+  background-color: $background-color !important;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  font-weight: 500;
+}
+html {
+  overflow-y: scroll;
+}
+a {
+  text-decoration: none !important;
+  color: $white;
+  &:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.ant-modal-content {
+  padding: 0rem !important;
+}
+
+.ant-image-preview-img-wrapper {
+  width: 80rem;
+  margin: 0 auto;
+  height: 100%;
+  object-fit: contain !important;
+}
+
+.ant-dropdown-menu {
+  box-shadow: $box-shadow !important;
+}

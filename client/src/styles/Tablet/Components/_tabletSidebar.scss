@@ -1,0 +1,48 @@
+.tablet {
+  &__sidebar {
+    position: fixed;
+    left: 0;
+    top: 6rem;
+    height: 90vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 1rem 0.5rem;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    &-icon {
+      font-size: 1.5rem;
+      color: $geekblue-5;
+    }
+
+    &-profile {
+      margin-bottom: 0.5rem;
+    }
+    &-link {
+      padding: 0.5rem;
+      &-active {
+        padding: 0.5rem;
+        background-color: $geekblue-3;
+        border-radius: 0.5rem;
+      }
+    }
+    &-menu {
+      background-color: $white;
+      border-radius: 0.5rem;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      margin-bottom: 1rem;
+      padding: 1rem 0.5rem;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 2.5rem;
+        &:first-child {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

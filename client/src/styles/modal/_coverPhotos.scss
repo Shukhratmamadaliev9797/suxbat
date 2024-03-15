@@ -1,0 +1,15 @@
+.coverPhotos {
+  &__photos {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    img {
+      width: 10%;
+      height: 4.5rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

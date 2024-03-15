@@ -1,0 +1,32 @@
+.title {
+  color: $heading-color;
+  margin-bottom: 1.5rem;
+  &__h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    /* Media query for tablets - Portrait */
+    @media only screen and (max-width: 768px) {
+      font-size: 24px; /* Adjust this value as needed for tablets */
+    }
+
+    /* Media query for tablets - Landscape */
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+      font-size: 28px; /* Adjust this value as needed for tablets in landscape */
+    }
+
+    /* Media query for small laptops and larger tablets */
+    @media only screen and (min-width: 1025px) and (max-width: 1366px) {
+      font-size: 32px; /* Adjust this value as needed for small laptops and larger tablets */
+    }
+
+    /* Media query for smartphones - Portrait */
+    @media only screen and (max-width: 480px) {
+      font-size: 20px; /* Adjust this value as needed for smartphones */
+    }
+
+    /* Media query for smartphones - Landscape */
+    @media only screen and (min-width: 481px) and (max-width: 767px) {
+      font-size: 22px; /* Adjust this value as needed for smartphones in landscape */
+    }
+  }
+}

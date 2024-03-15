@@ -1,0 +1,153 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  /* From https://css.glass */
+  background: $white;
+  box-shadow: $box-shadow;
+  padding: 0.5rem;
+  position: fixed;
+  z-index: 20;
+  &__logo {
+    display: flex;
+    align-items: center;
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+    span {
+      color: #407bff;
+      font-family: "Bungee", cursive;
+      font-size: 2rem;
+    }
+  }
+  &__menu {
+    display: flex;
+    align-items: center;
+
+    &-search {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 50rem;
+      padding: 0.3rem 0rem !important;
+      font-size: 1rem !important;
+      border-radius: 5rem;
+      @media only screen and (max-width: 1250px) {
+        width: 40rem;
+      }
+      @media only screen and (max-width: 1000px) {
+        width: 30rem;
+      }
+      input {
+        width: 100%;
+      }
+    }
+    &-searchHistory {
+      background-color: white;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 3.5rem;
+      height: 20vh;
+      transition: 0.1s linear;
+      padding: 0.5rem 1rem;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      border-radius: 0.5rem;
+      &-results {
+        margin-top: 0.5rem;
+        &-result {
+          margin-bottom: 0.5rem;
+          padding: 0.2rem;
+          border-radius: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &:hover {
+            background-color: #f1f0f0;
+          }
+          a {
+            display: flex;
+            align-items: center;
+            img {
+              width: 2rem;
+              height: 2rem;
+              border-radius: 50%;
+              margin-right: 0.5rem;
+            }
+            span {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+      &-title {
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+        // color: $lighter-color;
+        a {
+          // color: $darkerPrimary-color;
+        }
+      }
+    }
+    .active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .inactive {
+      visibility: hidden;
+      opacity: 0;
+    }
+    &-items {
+      display: flex;
+      align-items: center;
+      margin-left: 2rem;
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 2rem;
+
+      a {
+        background: #eeeeee;
+        border-radius: 50%;
+        padding: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $text-color !important;
+        svg {
+          height: 25px;
+          width: 25px;
+        }
+      }
+    }
+  }
+  &__profile {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    &-item {
+      margin-right: 1rem;
+      a {
+        svg {
+          height: 25px;
+          width: 25px;
+        }
+      }
+    }
+    &-link {
+      background: #eeeeee;
+      border: none;
+      border-radius: 50%;
+      padding: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.home {
+  &__freindsSuggestion {
+    background-color: $white;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid $seperator-color;
+    }
+    &-friends {
+      padding: 1rem;
+    }
+    &-friend {
+      margin-bottom: 1.5rem;
+      &-img {
+        display: flex;
+        align-items: center;
+        img {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          margin-right: 0.5rem;
+        }
+      }
+      &-name {
+        display: flex;
+        flex-direction: column;
+        margin-right: 3rem;
+        @media only screen and (max-width: "1550px") {
+          margin-right: 1rem;
+        }
+
+        span {
+          &:first-child {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: $text-color;
+            @media only screen and (max-width: "1250px") {
+              font-size: 0.85rem;
+            }
+          }
+          &:last-child {
+            color: $secondary-color;
+            font-size: 0.8rem;
+            @media only screen and (max-width: "1250px") {
+              font-size: 0.75rem !important;
+            }
+          }
+        }
+      }
+      &-action {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: 1rem;
+      }
+    }
+  }
+}
