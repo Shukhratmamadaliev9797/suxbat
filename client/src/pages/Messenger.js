@@ -142,7 +142,9 @@ export default function Messages({ notificationCount, setNotificationCount }) {
       console.log(err);
     }
   };
-
+  console.log("====================================");
+  console.log(conversationLists);
+  console.log("====================================");
   return (
     <div className="messages">
       <div className="messages__receivers">

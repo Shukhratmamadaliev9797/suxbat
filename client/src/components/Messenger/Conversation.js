@@ -31,7 +31,7 @@ export default function Conversation({
         <span>
           {user?.first_name} {user?.last_name}
         </span>
-        <span>{lastMessage.text}</span>
+        <span>{lastMessage?.text}</span>
       </div>
       <div>{notificationCount}</div>
     </div>
