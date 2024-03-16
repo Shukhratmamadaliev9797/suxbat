@@ -41,7 +41,9 @@ export default function Messages({ notificationCount, setNotificationCount }) {
   }, [notificationCount]);
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    const serverUrl =
+      process.env.NODE_ENV === "development" ? "ws://localhost:8900" : ""; // Update with your production server URL
+    socket.current = io(serverUrl);
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -142,9 +144,7 @@ export default function Messages({ notificationCount, setNotificationCount }) {
       console.log(err);
     }
   };
-  console.log("====================================");
-  console.log(conversationLists);
-  console.log("====================================");
+
   return (
     <div className="messages">
       <div className="messages__receivers">

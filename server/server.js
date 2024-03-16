@@ -1,4 +1,6 @@
 const express = require("express");
+const http = require("http");
+const socketIo = require("socket.io");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const { readdirSync } = require("fs");
@@ -6,22 +8,30 @@ const path = require("path");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
-// Env config
 dotenv.config();
-
-// Initialize express
+console.log("====================================");
+console.log(process.env.NODE_ENV);
+console.log("====================================");
 const app = express();
+const server =
+  process.env.NODE_ENV === "development" ? 8900 : http.createServer(app); // Create HTTP server
+const io = socketIo(server, {
+  cors: {
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+  },
+});
 
-// Convert data to JSON
+// const io = require("socket.io")(8900, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//   },
+// });
+
 app.use(express.json());
-
-// Access control allow origin
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-// File upload
 app.use(fileUpload({ useTempFiles: true }));
 
-// Database connection
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -32,7 +42,6 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-// Dynamically load routes
 const routesDir = path.join(__dirname, "routes");
 const routeFiles = readdirSync(routesDir);
 
@@ -51,16 +60,6 @@ app.get("*", (req, res) =>
   res.sendFile(path.resolve(__dirname, "..", "client", "build", "index.html"))
 );
 
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-});
-
-const io = require("socket.io")(8900, {
-  cors: {
-    origin: "http://localhost:3000",
-  },
-});
-
 let users = [];
 
 const addUser = (userId, socketId) => {
@@ -77,16 +76,12 @@ const getUserid = (userId) => {
 };
 
 io.on("connection", (socket) => {
-  //when ceonnect
   console.log("a user connected.");
 
-  //take userId and socketId from user
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
     io.emit("getUsers", users);
   });
-
-  //send and get message
 
   socket.on("sendMessage", ({ senderId, receiverId, text }) => {
     const user = getUserid(receiverId);
@@ -98,7 +93,6 @@ io.on("connection", (socket) => {
     }
   });
 
-  //when disconnect
   socket.on("disconnect", () => {
     console.log("a user disconnected!");
     removeUser(socket.id);
@@ -106,10 +100,8 @@ io.on("connection", (socket) => {
   });
 });
 
-// Port setup
 const port = process.env.PORT || 5000;
 
-// Start server
 app.listen(port, () => {
   console.log(`Server is listening on ${port}`);
 });
