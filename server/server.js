@@ -9,9 +9,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
 dotenv.config();
-console.log("====================================");
-console.log(process.env.NODE_ENV);
-console.log("====================================");
+
 const app = express();
 const server =
   process.env.NODE_ENV === "development" ? 8900 : http.createServer(app); // Create HTTP server
