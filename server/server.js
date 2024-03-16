@@ -11,19 +11,12 @@ const mongoose = require("mongoose");
 dotenv.config();
 
 const app = express();
-const server =
-  process.env.NODE_ENV === "development" ? 8900 : http.createServer(app); // Create HTTP server
-const io = socketIo(server, {
+const socketUrl = process.env.SERVER_SOCKET;
+const io = require("socket.io")(socketUrl, {
   cors: {
     origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
   },
 });
-
-// const io = require("socket.io")(8900, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//   },
-// });
 
 app.use(express.json());
 app.use(cors());
