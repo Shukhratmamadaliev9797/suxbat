@@ -17,7 +17,7 @@ const io = require("socket.io")(socketPort, {
     origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
   },
 });
-console.log(socketPort);
+console.log(process.env.CLIENT_ORIGIN);
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
