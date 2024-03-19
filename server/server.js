@@ -1,29 +1,23 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
-const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const { readdirSync } = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-
+const app = express();
+const server = http.createServer(app);
 dotenv.config();
 const PORT = process.env.PORT || 5000;
-const app = express();
-const socketPort = process.env.SOCKET_PORT;
-const io = require("socket.io")(socketPort, {
-  cors: {
-    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
-  },
-});
-console.log(process.env.CLIENT_ORIGIN);
+
+const io = require("socket.io")(server);
+
 app.use(express.json());
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({ useTempFiles: true }));
-const server = http.createServer(app);
 
+// Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost/suxbat", {
     useNewUrlParser: true,
@@ -34,6 +28,7 @@ mongoose
   })
   .catch((err) => console.log(err));
 
+// Mount routes
 const routesDir = path.join(__dirname, "routes");
 const routeFiles = readdirSync(routesDir);
 
@@ -46,12 +41,15 @@ routeFiles.forEach((routeFile) => {
   }
 });
 
+// Serve static files from React build folder
 app.use(express.static(path.join(__dirname, "../client/build")));
 
+// Serve React app for all routes
 app.get("*", (req, res) =>
   res.sendFile(path.resolve(__dirname, "..", "client", "build", "index.html"))
 );
 
+// Socket.IO logic
 let users = [];
 
 const addUser = (userId, socketId) => {
@@ -91,6 +89,8 @@ io.on("connection", (socket) => {
     io.emit("getUsers", users);
   });
 });
+
+// Start server
 
 server.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
