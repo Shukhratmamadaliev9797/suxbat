@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendVerificationLink } from "../actions/emailAction";
-
+import { Alert } from "antd";
 export default function EmailVerification() {
   const dispatch = useDispatch();
 
@@ -29,7 +29,9 @@ export default function EmailVerification() {
       <button onClick={submitHandler}>
         Click here to resend verification email
       </button>
-      <div>{message ? message : ""}</div>
+      <div className="emailVerification__message">
+        {message ? <Alert message={message} type="info" /> : ""}
+      </div>
     </div>
   );
 }

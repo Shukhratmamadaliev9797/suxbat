@@ -46,7 +46,7 @@ export default function NewsFeed({ notificationCount }) {
             <div className="newsFeed__link-img">
               <img src="/left/messenger.png" alt="" />
             </div>
-            <span>Messenger</span> <span>{notificationCount}</span>
+            <span>Messenger</span>
           </NavLink>
         </div>
         <div className="newsFeed__link">

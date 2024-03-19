@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  /* From https://css.glass */
-  background: $white;
+  background-color: $white;
   box-shadow: $box-shadow;
   padding: 0.5rem;
   position: fixed;
@@ -110,7 +109,9 @@
       align-items: center;
       justify-content: center;
       margin-left: 2rem;
-
+      &-icon {
+        font-size: 3.5rem;
+      }
       a {
         background: #eeeeee;
         border-radius: 50%;
@@ -133,11 +134,8 @@
     position: relative;
     &-item {
       margin-right: 1rem;
-      a {
-        svg {
-          height: 25px;
-          width: 25px;
-        }
+      &-icon {
+        font-size: 1rem;
       }
     }
     &-link {

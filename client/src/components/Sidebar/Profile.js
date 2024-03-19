@@ -20,7 +20,7 @@ export default function Profile() {
       <div className="sidebar__profile-img">
         <Avatar
           className="sidebar__profile-img-avatar"
-          shape="square"
+          shape="round"
           size={60}
           src={userInfo.picture}
         />

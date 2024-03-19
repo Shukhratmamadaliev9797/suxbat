@@ -21,7 +21,7 @@
   &__receiver {
     display: flex;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border-bottom: 1px solid #ddd;
     &-name {
       display: flex;
@@ -56,17 +56,21 @@
       width: 3rem;
       height: 3rem;
       margin-right: 0.5rem;
+
+      img {
+        border-radius: 50%;
+      }
     }
     &-message {
       max-width: 60%;
     }
     &-messageContent {
       border: 1px solid #ddd;
-      border-radius: 2rem;
-      padding: 1rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
     }
     span {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
   }
   &__me {
@@ -76,6 +80,9 @@
     &-img {
       width: 3rem;
       height: 3rem;
+      img {
+        border-radius: 50%;
+      }
     }
     &-message {
       margin-right: 0.5rem;
@@ -85,20 +92,15 @@
       max-width: 60%;
     }
     &-messageContent {
-      background: linear-gradient(
-        266deg,
-        rgb(52, 113, 97) 0%,
-        rgb(9, 112, 83) 96%,
-        rgb(27, 91, 73) 100%
-      );
+      background: $geekblue-3;
       border: 1px solid #ddd;
-      border-radius: 2rem;
-      padding: 1rem;
-      margin-bottom: 0.5rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.2rem;
       color: #fff;
     }
     span {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
   }
   &__chat {

@@ -73,11 +73,7 @@ export default function Account() {
           </div>
 
           <div className="newsFeed__link">
-            <Link
-              to="/signOut"
-              className={"newsFeed__link-link"}
-              onClick={signOutHandler}
-            >
+            <Link className={"newsFeed__link-link"} onClick={signOutHandler}>
               <div className="newsFeed__link-img">
                 <i className="logout_filled_icon"></i>
               </div>
