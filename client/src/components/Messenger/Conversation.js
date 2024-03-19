@@ -31,7 +31,10 @@ export default function Conversation({
         <span>
           {user?.first_name} {user?.last_name}
         </span>
-        <span>{lastMessage?.text.substring(0, 25)}...</span>
+        <span>
+          {lastMessage?.text.substring(0, 25)}{" "}
+          {lastMessage?.text.length > 25 ? "..." : ""}
+        </span>
       </div>
       <div>{notificationCount}</div>
     </div>
