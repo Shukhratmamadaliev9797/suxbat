@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
 import { signIn } from "../actions/userAction";
-import { useMediaQuery } from "react-responsive";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import Loader1 from "../components/Loaders/Loader1";
 import InputForm from "../components/Inputs/InputForm";
-import { Button, Space } from "antd";
+import { Space } from "antd";
 import Title from "../components/Typography/Title";
+import PrButton from "../components/Buttons/PrButton";
 const loginInfos = {
   email: "",
   password: "",
@@ -23,12 +23,6 @@ export default function Login() {
   const navigate = useNavigate();
   const userSignIn = useSelector((state) => state.userSignIn);
   const { loading, error, success } = userSignIn;
-
-  const tablet = useMediaQuery({
-    query: "(max-width: 992px)",
-  });
-
-  // const [field, meta] = useField();
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +48,7 @@ export default function Login() {
   const submitHandler = () => {
     dispatch(signIn({ email, password }, keepSigned));
   };
-  console.log(email);
+
   return (
     <>
       <ToastContainer
@@ -125,13 +119,9 @@ export default function Login() {
                         </div>
                       </div>
                       <div className="login__form-btn">
-                        <Button
-                          htmlType="submit"
-                          size={tablet ? "middle" : "large"}
-                          type="primary"
-                        >
+                        <PrButton htmlType="submit" type="primary">
                           Login
-                        </Button>
+                        </PrButton>
                       </div>
                     </Space>
                   </Form>
@@ -143,7 +133,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 }

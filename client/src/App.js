@@ -14,11 +14,13 @@ import Messenger from "./pages/Messenger";
 import { useState } from "react";
 import LoginInRoute from "./routes/LoginInRoute";
 import NotLoginInRoute from "./routes/NotLoginInRoute";
+import Groups from "./pages/Groups";
 
 function App() {
   const [notificationCount, setNotificationCount] = useState(() => {
     return JSON.parse(localStorage.getItem("notificationCount")) || 0;
   });
+
   return (
     <div className="App">
       <Routes>
@@ -40,6 +42,7 @@ function App() {
                 />
               }
             />
+            <Route path="/groups" element={<Groups />} />
           </Route>
 
           <Route path="/profile" element={<ProfileLayout />} />

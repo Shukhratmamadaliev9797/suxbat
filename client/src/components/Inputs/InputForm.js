@@ -10,10 +10,12 @@ export default function InputForm({
   radioType,
   label,
   radioName,
+  textarea,
+  rows,
   ...props
 }) {
   const [field, meta] = useField(props);
-
+  const { TextArea } = Input;
   const tablet = useMediaQuery({
     query: "(max-width: 992px)",
   });
@@ -49,6 +51,19 @@ export default function InputForm({
           >
             {radioName}
           </Radio>
+        </div>
+      ) : textarea ? (
+        <div className="input__input">
+          <TextArea
+            status={meta.touched && meta.error && "error"}
+            name={field.name}
+            showCount
+            rows={rows}
+            maxLength={150}
+            placeholder={placeholder}
+            {...field}
+            {...props}
+          />
         </div>
       ) : (
         <div className="input__input">

@@ -49,6 +49,13 @@ import {
   messageCreateReducer,
   messageListReducer,
 } from "./reducers/messageReducers";
+import {
+  groupCreateReducer,
+  groupJoinReducer,
+  groupLeaveReducer,
+  groupSearchReducer,
+  yourGroupListReducer,
+} from "./reducers/groupReducer";
 
 const initialState = {
   userSignIn: {
@@ -95,6 +102,11 @@ const reducer = combineReducers({
   conversationCreate: conversationCreateReducer,
   messageList: messageListReducer,
   messageCreate: messageCreateReducer,
+  groupCreate: groupCreateReducer,
+  yourGroupList: yourGroupListReducer,
+  groupSearch: groupSearchReducer,
+  groupJoin: groupJoinReducer,
+  groupLeave: groupLeaveReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

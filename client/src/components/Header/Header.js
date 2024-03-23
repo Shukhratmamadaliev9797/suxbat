@@ -1,7 +1,5 @@
 import React, { useRef, useState, forwardRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Notification from "../../svg/notifications";
-import Messenger from "../../svg/messenger";
 import { useDispatch, useSelector } from "react-redux";
 import useClickOutside from "../../helper/useClickOutside";
 import {
@@ -72,7 +70,7 @@ export default function Header({ notificationCount }) {
       <div className="header__menu">
         <div className="header__menu-search">
           <Search
-            placeholder="input search text"
+            placeholder="Search users"
             size="large"
             onClick={() => setSearchHistory(true)}
             value={searchTerm}
@@ -162,13 +160,13 @@ export default function Header({ notificationCount }) {
       <div className="header__profile">
         <div className="header__profile-item">
           <Avatar shape="square" size="large">
-            <i class="fas fa-bell  header__profile-item-icon"></i>
+            <i className="fas fa-bell  header__profile-item-icon"></i>
           </Avatar>
         </div>
         <div className="header__profile-item">
           <Badge count={notificationCount}>
             <Avatar shape="square" size="large">
-              <i class="fab fa-facebook-messenger header__profile-item-icon"></i>
+              <i className="fab fa-facebook-messenger header__profile-item-icon"></i>
             </Avatar>
           </Badge>
         </div>

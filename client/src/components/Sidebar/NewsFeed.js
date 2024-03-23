@@ -50,12 +50,17 @@ export default function NewsFeed({ notificationCount }) {
           </NavLink>
         </div>
         <div className="newsFeed__link">
-          <Link to="" className="newsFeed__link-link">
+          <NavLink
+            to="/groups"
+            className={({ isActive }) =>
+              isActive ? "newsFeed__link-active" : "newsFeed__link-link"
+            }
+          >
             <div className="newsFeed__link-img">
               <img src="/left/groups.png" alt="" />
             </div>
             <span>Groups</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="newsFeed__link">
           <Link to="" className="newsFeed__link-link">

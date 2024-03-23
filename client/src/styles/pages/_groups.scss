@@ -1,0 +1,41 @@
+.groups {
+  &__create {
+    text-align: right;
+  }
+  &__groups {
+    margin-top: 1rem;
+  }
+  &__group {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    margin-bottom: 1rem;
+    &-cover {
+      width: 100%;
+      height: 10rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem 0rem;
+    }
+    &-description {
+      padding: 0.5rem 1rem;
+    }
+    &-members {
+      padding: 0.5rem 1rem 1rem;
+    }
+  }
+  &__results {
+    padding: 1rem;
+    box-shadow: $box-shadow;
+    border-radius: 0.5rem;
+    background-color: $background-color1;
+  }
+}

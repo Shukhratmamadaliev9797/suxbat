@@ -108,8 +108,8 @@ export default function CreatePost({
         width={800}
         className="createPostModal"
       >
-        <div className="createPostModal__header">
-          <h5>Create Post</h5>{" "}
+        <div className="modal__title">
+          <h5>Create Post</h5>
         </div>
         <div className="createPostModal__body">
           <div className="createPostModal__body-user">

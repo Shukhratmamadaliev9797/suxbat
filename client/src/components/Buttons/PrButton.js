@@ -8,6 +8,7 @@ export default function PrButton({
   type,
   htmlType,
   loading,
+  width,
   ...props
 }) {
   const tablet = useMediaQuery({
@@ -22,7 +23,7 @@ export default function PrButton({
       size={tablet ? "middle" : "large"}
       loading={loading}
       {...props}
-      style={{ width: "100%" }}
+      style={{ width: `${width ? width : "100%"}` }}
     >
       {children}
     </Button>

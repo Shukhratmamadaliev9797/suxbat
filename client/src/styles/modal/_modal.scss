@@ -1,0 +1,16 @@
+.modal {
+  &__title {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    h5 {
+      text-align: center;
+    }
+  }
+  &__body {
+    padding: 1rem;
+    &__input1 {
+      display: grid;
+      grid-template-columns: 100%;
+    }
+  }
+}
