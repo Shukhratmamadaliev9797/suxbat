@@ -68,3 +68,52 @@ exports.leaveGroup = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.findGroup = async (req, res) => {
+  try {
+    const group = await Group.findById(req.params.id)
+      .populate("owner", "first_name last_name picture cover username")
+      .populate("members", "first_name last_name picture cover username")
+      .populate("posts", "type text images user background comments")
+      .populate({
+        path: "posts",
+        populate: {
+          path: "user",
+          select: "first_name last_name picture username cover",
+        },
+      })
+      .populate({
+        path: "posts",
+        populate: {
+          path: "comments",
+          populate: {
+            path: "commentBy",
+            select: "first_name last_name picture username",
+          },
+        },
+      });
+    if (group) {
+      res.status(200).json(group);
+    } else {
+      res.status(401).json({ message: "Not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.addPostGroup = async (req, res) => {
+  try {
+    const { groupId, postId } = req.body;
+    const group = await Group.findById(groupId);
+    if (!group.posts.includes(postId)) {
+      await group.updateOne({ $push: { posts: postId } });
+
+      res.json({ message: "Discussion created" });
+    } else {
+      return res.status(500).json({ message: "Discussion created" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

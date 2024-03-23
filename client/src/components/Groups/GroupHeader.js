@@ -1,12 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import PrButton from "../Buttons/PrButton";
-import { Avatar } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { joinGroup, leaveGroup } from "../../actions/groupAction";
+import { Avatar, Tabs } from "antd";
 import { Link } from "react-router-dom";
 
-export default function Group({ group }) {
-  const dispatch = useDispatch();
+export default function GroupHeader({ group, setGroupPage }) {
   const userSignIn = useSelector((state) => state.userSignIn);
   const { userInfo } = userSignIn;
 
@@ -24,22 +22,19 @@ export default function Group({ group }) {
     dispatch(leaveGroup(group._id));
     setIsMember(false); // Update state when user leaves the group
   };
+
   return (
-    <div className="groups__group">
-      <div className="groups__group-cover">
+    <div className="groupHeader">
+      <div className="groupHeader__cover">
         <img src={group.cover} alt="" />
       </div>
-      <div className="groups__group-title">
-        <h5>{group.title}</h5>
-        <div className="groups__group-action">
-          <PrButton
-            href={`/groups/${group._id}`}
-            width="5rem"
-            type="primary"
-            size="medium"
-          >
-            View
-          </PrButton>
+      <div className="groupHeader__title">
+        <div>
+          <h5>{group.title}</h5>
+          <p>{group.description}</p>
+        </div>
+
+        <div className="groupHeader__action">
           {userInfo.id === group.owner._id && (
             <PrButton width="5rem" type="primary" ghost danger size="medium">
               Delete
@@ -74,15 +69,12 @@ export default function Group({ group }) {
           )}
         </div>
       </div>
-      <div className="groups__group-description">
-        <p>{group.description}</p>
-      </div>
-      <div className="groups__group-members">
+      <div className="groupHeader__members">
         {group.members.length > 0 ? (
           <Avatar.Group>
-            {group.members.map((member, i) => {
+            {group.members.map((member) => {
               return (
-                <Link key={i} to={`/profile/${member.username}`}>
+                <Link to={`/profile/${member.username}`}>
                   <Avatar shape="round" size="large" src={member.picture} />
                 </Link>
               );
@@ -92,6 +84,20 @@ export default function Group({ group }) {
           "No members"
         )}
       </div>
+      <ul className="groupHeader__navbar">
+        <li onClick={() => setGroupPage(0)}>
+          <span>Discussion</span>
+        </li>
+        <li onClick={() => setGroupPage(1)}>
+          <span>Members</span>
+        </li>
+        <li onClick={() => setGroupPage(2)}>
+          <span>Photos</span>
+        </li>
+        <li onClick={() => setGroupPage(3)}>
+          <span>Events</span>
+        </li>
+      </ul>
     </div>
   );
 }

@@ -100,7 +100,7 @@ export default function Groups() {
                   label: <h5>Your groups</h5>,
                   children: (
                     <div className="groups__body">
-                      {searchedGroups.length <= 0 ? (
+                      {yourGroups?.length <= 0 ? (
                         <Empty>
                           <Button
                             type="primary"

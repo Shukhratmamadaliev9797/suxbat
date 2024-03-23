@@ -1,0 +1,40 @@
+.groupHeader {
+  background: $background-color1;
+  box-shadow: $box-shadow;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  &__cover {
+    width: 100%;
+    height: 35vh;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__title {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__members {
+    padding: 0rem 2rem 1rem;
+  }
+  &__navbar {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    li {
+      margin-right: 4rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      span {
+        cursor: pointer;
+        color: #494949;
+      }
+    }
+  }
+}

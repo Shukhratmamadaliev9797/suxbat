@@ -1,8 +1,14 @@
 import axios from "axios";
 import {
+  GROUP_ADD_POST_FAIL,
+  GROUP_ADD_POST_REQUEST,
+  GROUP_ADD_POST_SUCCESS,
   GROUP_CREATE_FAIL,
   GROUP_CREATE_REQUEST,
   GROUP_CREATE_SUCCESS,
+  GROUP_FIND_FAIL,
+  GROUP_FIND_REQUEST,
+  GROUP_FIND_SUCCESS,
   GROUP_JOIN_FAIL,
   GROUP_JOIN_REQUEST,
   GROUP_JOIN_SUCCESS,
@@ -149,6 +155,58 @@ export const leaveGroup = (groupId) => {
           ? error.response.data.message
           : error.message;
       dispatch({ type: GROUP_LEAVE_FAIL, payload: message });
+    }
+  };
+};
+
+export const findGroup = (groupId) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: GROUP_FIND_REQUEST });
+    const {
+      userSignIn: { userInfo },
+    } = getState();
+
+    try {
+      const { data } = await axios.get(
+        `/findGroup/${groupId}`,
+
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({ type: GROUP_FIND_SUCCESS, payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: GROUP_FIND_FAIL, payload: message });
+    }
+  };
+};
+
+export const addPostGroup = (groupId, postId) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: GROUP_ADD_POST_REQUEST });
+    const {
+      userSignIn: { userInfo },
+    } = getState();
+
+    try {
+      const { data } = await axios.put(
+        `/addPostGroup`,
+        { groupId, postId },
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({ type: GROUP_ADD_POST_SUCCESS, payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: GROUP_ADD_POST_FAIL, payload: message });
     }
   };
 };

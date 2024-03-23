@@ -198,6 +198,65 @@ export default function Post({ post }) {
               </div>
             )}
           </>
+        ) : post.type === "group" ? (
+          <>
+            <div className="posts__post-text-plain">
+              <p>{post.text}</p>
+            </div>
+            {post.images && post.images.length && (
+              <div
+                className={`posts__post-images ${
+                  post.images.length === 1
+                    ? "posts__post-images-preview1"
+                    : post.images.length === 2
+                    ? "posts__post-images-preview2"
+                    : post.images.length === 3
+                    ? "posts__post-images-preview3"
+                    : post.images.length === 4
+                    ? "posts__post-images-preview4"
+                    : post.images.length === 5
+                    ? "posts__post-images-preview5"
+                    : post.images.length % 2 === 0
+                    ? "posts__post-images-preview6"
+                    : "posts__post-images-singleGridImage"
+                }`}
+              >
+                <Image.PreviewGroup
+                  preview={{
+                    onChange: (current, prev) =>
+                      console.log(
+                        `current index: ${current}, prev index: ${prev}`
+                      ),
+                  }}
+                >
+                  {post.images.map((media, i) => {
+                    const mediaType = getMediaType(media.url);
+
+                    return mediaType === "image" ? (
+                      <Image
+                        src={media.url}
+                        alt={media.url}
+                        key={i}
+                        placeholder={
+                          <Image preview={false} src={media.url} width={200} />
+                        }
+                      />
+                    ) : mediaType === "video" ? (
+                      <Player
+                        key={i}
+                        className="video"
+                        fluid={false}
+                        src={media.url}
+                      >
+                        <BigPlayButton position="center" />
+                        <LoadingSpinner />
+                      </Player>
+                    ) : null;
+                  })}
+                </Image.PreviewGroup>
+              </div>
+            )}
+          </>
         ) : post.type === "profilePicture" ? (
           <div className="posts__post-profilePicture">
             <div

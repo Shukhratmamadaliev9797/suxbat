@@ -1,8 +1,14 @@
 import {
+  GROUP_ADD_POST_FAIL,
+  GROUP_ADD_POST_REQUEST,
+  GROUP_ADD_POST_SUCCESS,
   GROUP_CREATE_FAIL,
   GROUP_CREATE_REQUEST,
   GROUP_CREATE_RESET,
   GROUP_CREATE_SUCCESS,
+  GROUP_FIND_FAIL,
+  GROUP_FIND_REQUEST,
+  GROUP_FIND_SUCCESS,
   GROUP_JOIN_FAIL,
   GROUP_JOIN_REQUEST,
   GROUP_JOIN_SUCCESS,
@@ -88,6 +94,32 @@ export const groupLeaveReducer = (state = {}, action) => {
     case GROUP_LEAVE_SUCCESS:
       return { loading: false, success: true };
     case GROUP_LEAVE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const groupFindReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case GROUP_FIND_REQUEST:
+      return { loading: true };
+    case GROUP_FIND_SUCCESS:
+      return { loading: false, group: action.payload };
+    case GROUP_FIND_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const groupAddPostReducer = (state = { loading: false }, action) => {
+  switch (action.type) {
+    case GROUP_ADD_POST_REQUEST:
+      return { loading: true };
+    case GROUP_ADD_POST_SUCCESS:
+      return { loading: false, success: true };
+    case GROUP_ADD_POST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

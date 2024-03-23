@@ -15,6 +15,7 @@ import { useState } from "react";
 import LoginInRoute from "./routes/LoginInRoute";
 import NotLoginInRoute from "./routes/NotLoginInRoute";
 import Groups from "./pages/Groups";
+import GroupLayout from "./pages/GroupLayout";
 
 function App() {
   const [notificationCount, setNotificationCount] = useState(() => {
@@ -47,6 +48,7 @@ function App() {
 
           <Route path="/profile" element={<ProfileLayout />} />
           <Route path="/profile/:username" element={<ProfileLayout />} />
+          <Route path="/groups/:id" element={<GroupLayout />} />
         </Route>
       </Routes>
       <Routes>

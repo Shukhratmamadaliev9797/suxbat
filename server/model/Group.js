@@ -32,6 +32,8 @@ const groupSchema = new Schema({
       ref: "User", // Assuming you have a User model
     },
   ],
+  posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+
   created_at: {
     type: Date,
     default: Date.now,

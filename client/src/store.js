@@ -50,7 +50,9 @@ import {
   messageListReducer,
 } from "./reducers/messageReducers";
 import {
+  groupAddPostReducer,
   groupCreateReducer,
+  groupFindReducer,
   groupJoinReducer,
   groupLeaveReducer,
   groupSearchReducer,
@@ -107,6 +109,8 @@ const reducer = combineReducers({
   groupSearch: groupSearchReducer,
   groupJoin: groupJoinReducer,
   groupLeave: groupLeaveReducer,
+  groupFind: groupFindReducer,
+  groupAddPost: groupAddPostReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
