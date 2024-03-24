@@ -54,14 +54,14 @@ export default function CreatePost({
   useEffect(() => {
     if (successImages && imageStatus) {
       // Dispatch createPost when successImages changes
-      dispatch(createPost(null, null, text, allImages, userInfo.id));
+      dispatch(createPost(null, null, text, allImages, userInfo.id, null));
       dispatch({ type: IMAGES_UPLOAD_RESET });
     }
   }, [successImages, dispatch, text, allImages, userInfo.id]);
 
   const submitHandler = () => {
     if (background) {
-      dispatch(createPost(null, background, text, null, userInfo.id));
+      dispatch(createPost(null, background, text, null, userInfo.id, null));
     } else if (images && images.length) {
       const postImages = images.map((image) => {
         return dataURItoBlob(image);
@@ -79,7 +79,7 @@ export default function CreatePost({
       dispatch(uploadImages(formData, path));
       setImageStatus(true);
     } else if (text) {
-      dispatch(createPost(null, null, text, null, userInfo.id));
+      dispatch(createPost(null, null, text, null, userInfo.id, null));
     } else {
       notify("Empty");
     }

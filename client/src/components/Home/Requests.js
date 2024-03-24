@@ -25,12 +25,17 @@ export default function Requests({ requests }) {
             <div key={i} className="home__requests-request">
               <div className="home__requests-request-img">
                 <img src={request.picture} alt="" />
-                <div className="home__requests-request-name">
+                <Link
+                  to={`/profile/${request.username}`}
+                  className="home__requests-request-name"
+                >
                   <span>
-                    {request.first_name} {request.last_name}
+                    {request.first_name.length >= 15
+                      ? request.first_name
+                      : request.first_name + " " + request.last_name}
                   </span>
                   <span>Mutual friends {request.friends?.length}</span>
-                </div>
+                </Link>
               </div>
               <div className="home__requests-request-action">
                 <PrButton

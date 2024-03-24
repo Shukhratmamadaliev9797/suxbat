@@ -11,6 +11,7 @@ import { Alert, Button, Space } from "antd";
 import { useMediaQuery } from "react-responsive";
 import SelectForm from "../components/Inputs/SelectForm";
 import Title from "../components/Typography/Title";
+import PrButton from "../components/Buttons/PrButton";
 
 export default function Register() {
   const userInfos = {
@@ -97,6 +98,10 @@ export default function Register() {
     let pickedDate = new Date(bYear, bMonth - 1, bDay);
     let atleast14 = new Date(1970 + 14, 0, 1);
     let noMoreThan70 = new Date(1970 + 70, 0, 1);
+
+    // Convert email to lowercase
+    const lowercaseEmail = email.toLowerCase();
+
     if (currentDate - pickedDate < atleast14) {
       setDateError("It looks like you are too young to register.");
     } else if (currentDate - pickedDate > noMoreThan70) {
@@ -113,7 +118,7 @@ export default function Register() {
         register({
           first_name,
           last_name,
-          email,
+          email: lowercaseEmail,
           password,
           bYear,
           bMonth,
@@ -288,13 +293,9 @@ export default function Register() {
                       <span>Accept Term and Conditions</span>
                     </div>
                     <div className="register__form-btn">
-                      <Button
-                        htmlType="submit"
-                        size={tablet ? "middle" : "large"}
-                        type="primary"
-                      >
+                      <PrButton htmlType="submit" type="primary">
                         Register
-                      </Button>
+                      </PrButton>
                     </div>
                   </Space>
                 </Form>

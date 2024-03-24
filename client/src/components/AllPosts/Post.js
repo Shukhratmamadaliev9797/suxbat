@@ -82,7 +82,7 @@ export default function Post({ post }) {
   const showMore = () => {
     setCount((prev) => prev + 3);
   };
-
+  console.log(post);
   return (
     <div className="posts__post" ref={postRef}>
       <div className="posts__post-user">

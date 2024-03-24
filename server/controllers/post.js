@@ -4,7 +4,10 @@ const User = require("../model/User");
 exports.createPost = async (req, res) => {
   try {
     const post = await new Post(req.body).save();
-    await post.populate("user", "first_name last_name cover picture username");
+    await post.populate(
+      "user",
+      "first_name last_name cover picture username gender"
+    );
     res.status(200).json(post);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -16,13 +19,15 @@ exports.getAllPost = async (req, res) => {
     const followingTemp = await User.findById(req.user.id).select("following");
     const following = followingTemp.following;
     const followingPosts = await Post.find({ user: { $in: following } }) // using $in operator
-      .populate("user", "first_name last_name picture username cover")
+      .populate("user", "first_name last_name picture username cover gender")
       .populate("comments.commentBy", "first_name last_name picture username")
+      .populate("group", "title description cover owner")
       .sort({ createdAt: -1 });
 
     const userPosts = await Post.find({ user: req.user.id })
-      .populate("user", "first_name last_name picture username cover")
+      .populate("user", "first_name last_name picture username cover gender")
       .populate("comments.commentBy", "first_name last_name picture username")
+      .populate("group", "title description cover owner")
       .sort({ createdAt: -1 });
     followingPosts.push(...[...userPosts]);
     followingPosts.sort((a, b) => {

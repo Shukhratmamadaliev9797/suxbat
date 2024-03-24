@@ -69,7 +69,9 @@ export default function SuggestFriends({ friends, userInfo, sentRequests }) {
                       <img src={friendF.picture} alt="" />
                       <div className="home__freindsSuggestion-friend-name">
                         <span>
-                          {friendF.first_name} {friendF.last_name}
+                          {friendF.first_name.length >= 15
+                            ? friendF.first_name
+                            : friendF.first_name + " " + friendF.last_name}
                         </span>
                         <span>Mutual friends {friendF.friends?.length}</span>
                       </div>

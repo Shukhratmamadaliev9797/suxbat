@@ -23,7 +23,7 @@ import {
   POST_SAVE_SUCCESS,
 } from "../constants/postConstants";
 
-export const createPost = (type, background, text, images, user) => {
+export const createPost = (type, background, text, images, user, group) => {
   return async (dispatch, getState) => {
     dispatch({
       type: POST_CREATE_REQUEST,
@@ -32,6 +32,7 @@ export const createPost = (type, background, text, images, user) => {
       text,
       images,
       user,
+      group,
     });
     const {
       userSignIn: { userInfo },
@@ -45,6 +46,7 @@ export const createPost = (type, background, text, images, user) => {
           text,
           images,
           user,
+          group,
         },
         { headers: { Authorization: `Bearer ${userInfo.token}` } }
       );

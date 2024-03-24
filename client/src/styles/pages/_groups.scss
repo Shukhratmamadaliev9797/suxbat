@@ -4,6 +4,9 @@
   }
   &__groups {
     margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
   }
   &__group {
     border-radius: 0.5rem;

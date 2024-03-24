@@ -46,7 +46,8 @@ export default function Login() {
   }, [error, success, navigate]);
 
   const submitHandler = () => {
-    dispatch(signIn({ email, password }, keepSigned));
+    const lowercaseEmail = email.toLowerCase();
+    dispatch(signIn({ email: lowercaseEmail, password }, keepSigned));
   };
 
   return (

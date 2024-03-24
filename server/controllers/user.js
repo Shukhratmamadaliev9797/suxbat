@@ -42,15 +42,15 @@ exports.register = async (req, res) => {
       });
     }
     //validate character size
-    if (!validateLength(first_name, 3, 30)) {
+    if (!validateLength(first_name, 3, 15)) {
       return res
         .status(400)
-        .json({ message: "First name must be between 3 and 30 characters" });
+        .json({ message: "First name must be between 3 and 15 characters" });
     }
-    if (!validateLength(last_name, 3, 30)) {
+    if (!validateLength(last_name, 3, 15)) {
       return res
         .status(400)
-        .json({ message: "Last name must be between 3 and 30 characters" });
+        .json({ message: "Last name must be between 3 and 15 characters" });
     }
     if (!validateLength(password, 6, 40)) {
       return res

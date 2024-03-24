@@ -70,14 +70,18 @@ export default function CreateGroupPost({
   useEffect(() => {
     if (successImages && imageStatus) {
       // Dispatch createPost when successImages changes
-      dispatch(createPost("group", null, text, allImages, userInfo.id));
+      dispatch(
+        createPost("group", null, text, allImages, userInfo.id, group._id)
+      );
       dispatch({ type: IMAGES_UPLOAD_RESET });
     }
   }, [successImages, dispatch, text, allImages, userInfo.id]);
 
   const submitHandler = () => {
     if (background) {
-      dispatch(createPost("group", background, text, null, userInfo.id));
+      dispatch(
+        createPost("group", background, text, null, userInfo.id, group._id)
+      );
     } else if (images && images.length) {
       const postImages = images.map((image) => {
         return dataURItoBlob(image);
@@ -95,7 +99,7 @@ export default function CreateGroupPost({
       dispatch(uploadImages(formData, path));
       setImageStatus(true);
     } else if (text) {
-      dispatch(createPost("group", null, text, null, userInfo.id));
+      dispatch(createPost("group", null, text, null, userInfo.id, group._id));
     } else {
       notify("Empty");
     }

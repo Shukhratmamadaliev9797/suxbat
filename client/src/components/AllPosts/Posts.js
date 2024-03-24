@@ -21,7 +21,7 @@ export default function Posts() {
       dispatch({ type: POST_LIST_SUCCESS, payload: [post, ...posts] });
     }
   }, [dispatch, success]);
-
+  console.log(posts);
   return (
     <div className="posts">
       {loading
