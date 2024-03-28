@@ -19,7 +19,8 @@ export default function CodeVerification({ code, setCode, email, loading }) {
       .max("5", "Code must be 5 characters."),
   });
   const validateCode = () => {
-    dispatch(validateResetCode(email, code));
+    const emailLower = email.toLowerCase();
+    dispatch(validateResetCode(emailLower, code));
   };
   return (
     <>

@@ -322,6 +322,14 @@ export const updateDetailsProfile = ({
         { headers: { Authorization: `Bearer ${userInfo.token}` } }
       );
       dispatch({ type: PROFILE_DETAILS_UPDATE_SUCCESS, payload: data });
+      // Retrieve userInfo from localStorage
+      let updatedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+      // Update the picture property
+      updatedUserInfo.first_name = data.first_name;
+      updatedUserInfo.last_name = data.last_name;
+      // Set the updated userInfo back into localStorage
+      localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
     } catch (error) {
       const message =
         error.response && error.response.data.message

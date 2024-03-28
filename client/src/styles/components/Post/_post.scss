@@ -35,17 +35,20 @@
             }
           }
         }
+        &-textContent {
+          background: rgb(237, 236, 236);
+          display: inline-block;
+          font-size: 0.7rem;
+          padding: 0.4rem;
+          border-radius: 0.5rem;
+        }
         &-text {
           margin-left: 2.5rem;
           margin-top: 0.5rem;
-          p {
-            background: rgb(237, 236, 236);
-            display: inline;
-            font-size: 0.7rem;
-            padding: 0.4rem;
-            border-radius: 0.5rem;
-          }
+
           img {
+            display: block;
+            margin-top: 0.5rem;
             width: 5rem;
             height: 5rem;
             object-fit: cover;

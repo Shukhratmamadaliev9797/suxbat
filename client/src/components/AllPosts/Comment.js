@@ -16,7 +16,11 @@ export default function Comment({ comment }) {
         </div>
       </div>
       <div className="posts__post-comments-comment-text">
-        {comment.comment && <p>{comment.comment}</p>}
+        {comment.comment && (
+          <div className="posts__post-comments-comment-textContent">
+            {comment.comment}
+          </div>
+        )}
         {comment.image && <img src={comment.image} alt="" />}
       </div>
     </div>

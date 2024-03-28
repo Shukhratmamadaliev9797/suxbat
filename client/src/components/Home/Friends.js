@@ -21,9 +21,13 @@ export default function Friends({ friends }) {
                 <img src={friend.picture} alt="" />
                 <div className="home__friends-friend-name">
                   <span>
-                    {friend.first_name.length >= 15
-                      ? friend.first_name
-                      : friend.first_name + " " + friend.last_name}
+                    {friend.first_name}{" "}
+                    {friend.first_name.length + friend.last_name.length > 20 ? (
+                      <br />
+                    ) : (
+                      ""
+                    )}
+                    {friend.last_name}
                   </span>
                   <span>Mutual friends {friend.friends?.length}</span>
                 </div>

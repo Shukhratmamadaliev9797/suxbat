@@ -65,17 +65,26 @@ export default function SuggestFriends({ friends, userInfo, sentRequests }) {
                 const isSent = isRequestSent(friendF._id);
                 return (
                   <div key={i} className="home__freindsSuggestion-friend">
-                    <div className="home__freindsSuggestion-friend-img">
+                    <Link
+                      to={`/profile/${friendF.username}`}
+                      className="home__freindsSuggestion-friend-img"
+                    >
                       <img src={friendF.picture} alt="" />
                       <div className="home__freindsSuggestion-friend-name">
                         <span>
-                          {friendF.first_name.length >= 15
-                            ? friendF.first_name
-                            : friendF.first_name + " " + friendF.last_name}
+                          {friendF.first_name}
+                          {friendF.first_name.length +
+                            friendF.last_name.length >
+                          20 ? (
+                            <br />
+                          ) : (
+                            ""
+                          )}
+                          {friendF.last_name}
                         </span>
                         <span>Mutual friends {friendF.friends?.length}</span>
                       </div>
-                    </div>
+                    </Link>
                     <div className="home__freindsSuggestion-friend-action">
                       {isSent ? (
                         <PrButton

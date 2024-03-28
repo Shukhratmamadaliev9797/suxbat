@@ -4,15 +4,17 @@ import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { comment } from "../../actions/postAction";
 import dataURItoBlob from "../../helper/dataURItoBlob";
-import { uploadCommentImages, uploadImages } from "../../actions/uploadImages";
+import { uploadCommentImages } from "../../actions/uploadImages";
 import Loader3 from "../Loaders/Loader3";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
-export default function CreateComment({ user, postId, setCount, setComments }) {
+export default function CreateComment({ postId, setCount, setComments }) {
   const [picker, setPicker] = useState(false);
   const [text, setText] = useState("");
   const [cursorPosition, setCursorPosition] = useState();
   const [commentImage, setCommentImage] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const textRef = useRef(null);
   const imageInput = useRef(null);
   const dispatch = useDispatch();
@@ -41,14 +43,7 @@ export default function CreateComment({ user, postId, setCount, setComments }) {
     if (textRef.current) {
       textRef.current.selectionEnd = cursorPosition;
     }
-    if (successCommentImg) {
-      dispatch(comment(postId, text, img[0].url));
-      setCount((prev) => ++prev);
-    }
-    if (comments) {
-      setComments(comments);
-    }
-  }, [cursorPosition, successCommentImg, comments]);
+  }, [cursorPosition]);
 
   const handleEmoji = (emojiObject) => {
     const emoji = emojiObject.emoji;
@@ -83,23 +78,44 @@ export default function CreateComment({ user, postId, setCount, setComments }) {
     };
   };
 
-  const handleComment = (e) => {
+  const commentHandle = async () => {
+    if (commentImage !== "") {
+      setLoading(true);
+      const img = dataURItoBlob(commentImage);
+      const path = `${userInfo.username}/post_images/${postId}`;
+      let formData = new FormData();
+      formData.append("path", path);
+      formData.append("file", img);
+      const imgComment = await uploadCommentImages(
+        formData,
+        path,
+        userInfo.token
+      );
+      const comments = await comment(
+        postId,
+        text,
+        imgComment[0].url,
+        userInfo.token
+      );
+      setComments(comments);
+      setCount((prev) => ++prev);
+      setLoading(false);
+      setText("");
+      setCommentImage("");
+    } else {
+      setLoading(true);
+      const comments = await comment(postId, text, "", userInfo.token);
+      setComments(comments);
+      setCount((prev) => ++prev);
+      setLoading(false);
+      setText("");
+      setCommentImage("");
+    }
+  };
+
+  const handleComment = async (e) => {
     if (e.key === "Enter") {
-      if (commentImage !== "") {
-        const img = dataURItoBlob(commentImage);
-        const path = `${userInfo.username}/post_images/${postId}`;
-        let formData = new FormData();
-        formData.append("path", path);
-        formData.append("file", img);
-        dispatch(uploadCommentImages(formData, path));
-        setText("");
-        setCommentImage("");
-      } else {
-        dispatch(comment(postId, text, ""));
-        setCount((prev) => ++prev);
-        setText("");
-        setCommentImage("");
-      }
+      commentHandle();
     }
   };
 
@@ -149,6 +165,15 @@ export default function CreateComment({ user, postId, setCount, setComments }) {
               className="posts__post-createComment-input-icon"
             >
               <i className="camera_icon"></i>
+            </div>
+            <div className="posts__post-createComment-input-sendIcon">
+              {loading || loadingImage ? (
+                <Spin
+                  indicator={<LoadingOutlined style={{ fontSize: 35 }} spin />}
+                />
+              ) : (
+                <i className="fab fa-telegram" onClick={commentHandle}></i>
+              )}
             </div>
           </div>
         </div>

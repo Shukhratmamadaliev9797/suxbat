@@ -141,129 +141,138 @@ export default function Friends() {
           },
         ]}
       />
-      <Collapse
-        className="friends__container"
-        collapsible="header"
-        defaultActiveKey={["1"]}
-        items={[
-          {
-            key: "1",
-            label: <h5>Requests</h5>,
-            children: (
-              <div className="friends__friends">
-                {loading
-                  ? "loading"
-                  : error
-                  ? error
-                  : localRequests?.map((request) => {
-                      return (
-                        <Card
-                          key={request._id} // Add a unique key
-                          style={{
-                            width: 250,
-                            marginRight: "1rem",
-                          }}
-                          cover={
-                            <img
-                              className="friends__friend-cover"
-                              alt="example"
-                              src={
-                                request.cover
-                                  ? request.cover
-                                  : "/images/default_cover1.jpeg"
+
+      {localRequests?.length > 0 && (
+        <Collapse
+          className="friends__container"
+          collapsible="header"
+          defaultActiveKey={["1"]}
+          items={[
+            {
+              key: "1",
+              label: <h5>Requests</h5>,
+              children: (
+                <div className="friends__friends">
+                  {loading
+                    ? "loading"
+                    : error
+                    ? error
+                    : localRequests?.map((request) => {
+                        return (
+                          <Card
+                            key={request._id} // Add a unique key
+                            style={{
+                              width: 250,
+                              marginRight: "1rem",
+                            }}
+                            cover={
+                              <img
+                                className="friends__friend-cover"
+                                alt="example"
+                                src={
+                                  request.cover
+                                    ? request.cover
+                                    : "/images/default_cover1.jpeg"
+                                }
+                              />
+                            }
+                            actions={[
+                              <Tooltip title="Accept">
+                                <CheckOutlined
+                                  onClick={() =>
+                                    acceptRequestHandler(request._id)
+                                  }
+                                  style={{ color: "blue" }}
+                                  key="profile"
+                                />
+                              </Tooltip>,
+                              <Tooltip title="Reject">
+                                <CloseOutlined
+                                  style={{ color: "red" }}
+                                  onClick={() =>
+                                    deleteRequestHandler(request._id)
+                                  }
+                                />
+                              </Tooltip>,
+                            ]}
+                          >
+                            <Meta
+                              avatar={<Avatar src={request.picture} />}
+                              title={
+                                request.first_name + " " + request.last_name
                               }
+                              description={`Mutual friends ${request.friends.length} `}
                             />
-                          }
-                          actions={[
-                            <Tooltip title="Accept">
-                              <CheckOutlined
-                                onClick={() =>
-                                  acceptRequestHandler(request._id)
+                          </Card>
+                        );
+                      })}
+                </div>
+              ),
+            },
+          ]}
+        />
+      )}
+      {localSentRequests?.length > 0 && (
+        <Collapse
+          className="friends__container"
+          collapsible="header"
+          defaultActiveKey={["1"]}
+          items={[
+            {
+              key: "1",
+              label: <h5>Sent Requests</h5>,
+              children: (
+                <div className="friends__friends">
+                  {loading
+                    ? "loading"
+                    : error
+                    ? error
+                    : localSentRequests?.map((request) => {
+                        return (
+                          <Card
+                            key={request._id} // Add a unique key
+                            style={{
+                              width: 250,
+                              marginRight: "1rem",
+                            }}
+                            cover={
+                              <img
+                                className="friends__friend-cover"
+                                alt="example"
+                                src={
+                                  request.cover
+                                    ? request.cover
+                                    : "/images/default_cover1.jpeg"
                                 }
-                                style={{ color: "blue" }}
-                                key="profile"
                               />
-                            </Tooltip>,
-                            <Tooltip title="Reject">
-                              <CloseOutlined
-                                style={{ color: "red" }}
-                                onClick={() =>
-                                  deleteRequestHandler(request._id)
-                                }
-                              />
-                            </Tooltip>,
-                          ]}
-                        >
-                          <Meta
-                            avatar={<Avatar src={request.picture} />}
-                            title={request.first_name + " " + request.last_name}
-                            description={`Mutual friends ${request.friends.length} `}
-                          />
-                        </Card>
-                      );
-                    })}
-              </div>
-            ),
-          },
-        ]}
-      />
-      <Collapse
-        className="friends__container"
-        collapsible="header"
-        defaultActiveKey={["1"]}
-        items={[
-          {
-            key: "1",
-            label: <h5>Sent Requests</h5>,
-            children: (
-              <div className="friends__friends">
-                {loading
-                  ? "loading"
-                  : error
-                  ? error
-                  : localSentRequests?.map((request) => {
-                      return (
-                        <Card
-                          key={request._id} // Add a unique key
-                          style={{
-                            width: 250,
-                            marginRight: "1rem",
-                          }}
-                          cover={
-                            <img
-                              className="friends__friend-cover"
-                              alt="example"
-                              src={
-                                request.cover
-                                  ? request.cover
-                                  : "/images/default_cover1.jpeg"
+                            }
+                            actions={[
+                              <Tooltip title="Cancel request">
+                                <XOutlined
+                                  style={{ color: "red" }}
+                                  onClick={() =>
+                                    cancelRequestHandler(request._id)
+                                  }
+                                />
+                              </Tooltip>,
+                            ]}
+                          >
+                            <Meta
+                              avatar={<Avatar src={request.picture} />}
+                              title={
+                                request.first_name + " " + request.last_name
                               }
+                              description={`Mutual friends ${request.friends?.length} `}
                             />
-                          }
-                          actions={[
-                            <Tooltip title="Cancel request">
-                              <XOutlined
-                                style={{ color: "red" }}
-                                onClick={() =>
-                                  cancelRequestHandler(request._id)
-                                }
-                              />
-                            </Tooltip>,
-                          ]}
-                        >
-                          <Meta
-                            avatar={<Avatar src={request.picture} />}
-                            title={request.first_name + " " + request.last_name}
-                            description={`Mutual friends ${request.friends?.length} `}
-                          />
-                        </Card>
-                      );
-                    })}
-              </div>
-            ),
-          },
-        ]}
-      />
+                          </Card>
+                        );
+                      })}
+                </div>
+              ),
+            },
+          ]}
+        />
+      )}
     </Space>
   );
 }

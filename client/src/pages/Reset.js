@@ -76,7 +76,6 @@ export default function Reset() {
       setStatus("3");
     }
     if (successPassword) {
-      dispatch({ type: USER_PASSWORD_CHANGE_RESET });
       setStatus("");
       navigate("/login");
     }

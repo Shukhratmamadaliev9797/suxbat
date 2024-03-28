@@ -8,7 +8,10 @@ import PostMenu from "./PostMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { getReacts, reactPost } from "../../actions/postAction";
 import Comment from "./Comment";
-import { Image, Popover } from "antd";
+import { Popover } from "antd";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Avatar } from "antd";
+import Masonry from "react-responsive-masonry";
 
 export default function Post({ post }) {
   const [postReacts, setPostReacts] = useState(false);
@@ -82,53 +85,102 @@ export default function Post({ post }) {
   const showMore = () => {
     setCount((prev) => prev + 3);
   };
-  console.log(post);
+
   return (
     <div className="posts__post" ref={postRef}>
-      <div className="posts__post-user">
-        <div className="posts__post-user-info">
-          <Link
-            to={`/profile/${post.user.username}`}
-            className="posts__post-user-info-img"
-          >
-            <img src={post.user.picture} alt="" />
-          </Link>
-          <div className="posts__post-user-info-name">
-            <div className="posts__post-user-info-name-type">
+      {post.type === "group" ? (
+        <div className="posts__post-user">
+          <div className="posts__post-group-info">
+            <Link
+              to={`/profile/${post.user.username}`}
+              className="posts__post-group-img"
+            >
+              <Avatar shape="square" size="100" src={post?.group?.cover} />
+              <img
+                src={post.user.picture}
+                alt=""
+                className="posts__post-group-img-user"
+              />
+            </Link>
+            <div className="posts__post-group-name">
               <h6>
+                <Link
+                  to={`/groups/${post?.group?._id}`}
+                  className="posts__post-group-groupName"
+                >
+                  {post?.group?.title}
+                </Link>
+              </h6>
+              <div className="posts__post-group-user">
                 <Link to={`/profile/${post.user.username}`}>
                   {post.user.first_name} {post.user.last_name}
                 </Link>
-              </h6>{" "}
-              <div>
-                {post.type === "profilePicture" &&
-                  `upated ${
-                    post.user.gender === "male" ? "his" : "her"
-                  } profile picture`}
-                {post.type === "cover" &&
-                  `upated ${
-                    post.user.gender === "male" ? "his" : "her"
-                  } cover picture`}
+                <span>{format(post.createdAt)}</span>
               </div>
             </div>
-            <span>{format(post.createdAt)}</span>
+          </div>
+          <div
+            onClick={() => setShowPostMenu((prev) => !prev)}
+            className="posts__post-user-action"
+          >
+            <PostMenu
+              setShowPostMenu={setShowPostMenu}
+              userId={userInfo.id}
+              postUserId={post.user._id}
+              post={post}
+              checkSaved={checkSaved}
+              setCheckSaved={setCheckSaved}
+              postRef={postRef}
+            />
           </div>
         </div>
-        <div
-          onClick={() => setShowPostMenu((prev) => !prev)}
-          className="posts__post-user-action"
-        >
-          <PostMenu
-            setShowPostMenu={setShowPostMenu}
-            userId={userInfo.id}
-            postUserId={post.user._id}
-            post={post}
-            checkSaved={checkSaved}
-            setCheckSaved={setCheckSaved}
-            postRef={postRef}
-          />
+      ) : (
+        <div className="posts__post-user">
+          <div className="posts__post-user-info">
+            <Link
+              to={`/profile/${post.user.username}`}
+              className="posts__post-user-info-img"
+            >
+              <img src={post.user.picture} alt="" />
+            </Link>
+            <div className="posts__post-user-info-name">
+              <div className="posts__post-user-info-name-type">
+                <h6>
+                  <Link to={`/profile/${post.user.username}`}>
+                    {post.user.first_name} {post.user.last_name}
+                  </Link>
+                </h6>{" "}
+                <div>
+                  {post.type === "profilePicture" &&
+                    `upated ${
+                      post.user.gender === "male" ? "his" : "her"
+                    } profile picture`}
+                  {post.type === "cover" &&
+                    `upated ${
+                      post.user.gender === "male" ? "his" : "her"
+                    } cover picture`}
+                </div>
+              </div>
+              <span>{format(post.createdAt)}</span>
+            </div>
+          </div>
+          <div
+            onClick={() => setShowPostMenu((prev) => !prev)}
+            className="posts__post-user-action"
+          >
+            <PostMenu
+              setShowPostMenu={setShowPostMenu}
+              userId={userInfo.id}
+              postUserId={post.user._id}
+              post={post}
+              checkSaved={checkSaved}
+              setCheckSaved={setCheckSaved}
+              postRef={postRef}
+            />
+          </div>
         </div>
-      </div>
+      )}
+
       <div className="posts__post-text">
         {post.background ? (
           <div
@@ -145,57 +197,28 @@ export default function Post({ post }) {
               <p>{post.text}</p>
             </div>
             {post.images && post.images.length && (
-              <div
-                className={`posts__post-images ${
-                  post.images.length === 1
-                    ? "posts__post-images-preview1"
-                    : post.images.length === 2
-                    ? "posts__post-images-preview2"
-                    : post.images.length === 3
-                    ? "posts__post-images-preview3"
-                    : post.images.length === 4
-                    ? "posts__post-images-preview4"
-                    : post.images.length === 5
-                    ? "posts__post-images-preview5"
-                    : post.images.length % 2 === 0
-                    ? "posts__post-images-preview6"
-                    : "posts__post-images-singleGridImage"
-                }`}
+              <Masonry
+                columnsCount={post.images.length === 1 ? 1 : 2}
+                gutter="10px"
+                className="posts__post-images"
               >
-                <Image.PreviewGroup
-                  preview={{
-                    onChange: (current, prev) =>
-                      console.log(
-                        `current index: ${current}, prev index: ${prev}`
-                      ),
-                  }}
-                >
-                  {post.images.map((media, i) => {
-                    const mediaType = getMediaType(media.url);
-
-                    return mediaType === "image" ? (
-                      <Image
-                        src={media.url}
-                        alt={media.url}
-                        key={i}
-                        placeholder={
-                          <Image preview={false} src={media.url} width={200} />
-                        }
-                      />
-                    ) : mediaType === "video" ? (
-                      <Player
-                        key={i}
-                        className="video"
-                        fluid={false}
-                        src={media.url}
-                      >
-                        <BigPlayButton position="center" />
-                        <LoadingSpinner />
-                      </Player>
-                    ) : null;
-                  })}
-                </Image.PreviewGroup>
-              </div>
+                {post.images.map((media, i) => {
+                  const mediaType = getMediaType(media.url);
+                  return mediaType === "image" ? (
+                    <img src={media.url} alt={media.url} key={i} />
+                  ) : mediaType === "video" ? (
+                    <Player
+                      key={i}
+                      className="video"
+                      fluid={false}
+                      src={media.url}
+                    >
+                      <BigPlayButton position="center" />
+                      <LoadingSpinner />
+                    </Player>
+                  ) : null;
+                })}
+              </Masonry>
             )}
           </>
         ) : post.type === "group" ? (
@@ -204,57 +227,28 @@ export default function Post({ post }) {
               <p>{post.text}</p>
             </div>
             {post.images && post.images.length && (
-              <div
-                className={`posts__post-images ${
-                  post.images.length === 1
-                    ? "posts__post-images-preview1"
-                    : post.images.length === 2
-                    ? "posts__post-images-preview2"
-                    : post.images.length === 3
-                    ? "posts__post-images-preview3"
-                    : post.images.length === 4
-                    ? "posts__post-images-preview4"
-                    : post.images.length === 5
-                    ? "posts__post-images-preview5"
-                    : post.images.length % 2 === 0
-                    ? "posts__post-images-preview6"
-                    : "posts__post-images-singleGridImage"
-                }`}
+              <Masonry
+                columnsCount={post.images.length === 1 ? 1 : 2}
+                gutter="10px"
+                className="posts__post-images"
               >
-                <Image.PreviewGroup
-                  preview={{
-                    onChange: (current, prev) =>
-                      console.log(
-                        `current index: ${current}, prev index: ${prev}`
-                      ),
-                  }}
-                >
-                  {post.images.map((media, i) => {
-                    const mediaType = getMediaType(media.url);
-
-                    return mediaType === "image" ? (
-                      <Image
-                        src={media.url}
-                        alt={media.url}
-                        key={i}
-                        placeholder={
-                          <Image preview={false} src={media.url} width={200} />
-                        }
-                      />
-                    ) : mediaType === "video" ? (
-                      <Player
-                        key={i}
-                        className="video"
-                        fluid={false}
-                        src={media.url}
-                      >
-                        <BigPlayButton position="center" />
-                        <LoadingSpinner />
-                      </Player>
-                    ) : null;
-                  })}
-                </Image.PreviewGroup>
-              </div>
+                {post.images.map((media, i) => {
+                  const mediaType = getMediaType(media.url);
+                  return mediaType === "image" ? (
+                    <img src={media.url} alt={media.url} key={i} />
+                  ) : mediaType === "video" ? (
+                    <Player
+                      key={i}
+                      className="video"
+                      fluid={false}
+                      src={media.url}
+                    >
+                      <BigPlayButton position="center" />
+                      <LoadingSpinner />
+                    </Player>
+                  ) : null;
+                })}
+              </Masonry>
             )}
           </>
         ) : post.type === "profilePicture" ? (
@@ -367,10 +361,9 @@ export default function Post({ post }) {
         </div>
       </div>
       <CreateComment
+        postId={post._id}
         setComments={setComments}
         setCount={setCount}
-        postId={post._id}
-        user={post.user}
       />
       <div className="posts__post-comments">
         {comments &&

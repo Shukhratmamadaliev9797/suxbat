@@ -10,7 +10,7 @@ export default function SendCode({ user, email, loading }) {
   const dispatch = useDispatch();
 
   const sendCode = () => {
-    dispatch(sendPasswordResetCode(email));
+    dispatch(sendPasswordResetCode(email.toLowerCase()));
   };
 
   return (

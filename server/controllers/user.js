@@ -244,7 +244,7 @@ exports.changePassword = async (req, res) => {
   const { email, password } = req.body;
   const cryptedPassword = await bcrypt.hash(password, 12);
   await User.findOneAndUpdate({ email }, { password: cryptedPassword });
-  return res.status(200).json({ message: "Changed" });
+  return res.status(200).json({ message: "Password changed successfully" });
 };
 
 exports.getProfile = async (req, res) => {
@@ -636,7 +636,9 @@ exports.removeFromSearch = async (req, res) => {
 exports.getFriendsPageInfo = async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
-      .select("friends requests following followers")
+      .select(
+        "first_name last_name picture username friends requests following followers"
+      )
       .populate(
         "friends",
         "first_name last_name picture username friends cover"
@@ -660,6 +662,7 @@ exports.getFriendsPageInfo = async (req, res) => {
     }).select("first_name last_name picture username");
 
     res.json({
+      user: user,
       friends: user.friends,
       requests: user.requests,
       following: user.following,

@@ -10,6 +10,7 @@ import InputForm from "../components/Inputs/InputForm";
 import { Space } from "antd";
 import Title from "../components/Typography/Title";
 import PrButton from "../components/Buttons/PrButton";
+import { USER_PASSWORD_CHANGE_RESET } from "../constants/userConstants";
 const loginInfos = {
   email: "",
   password: "",
@@ -24,6 +25,9 @@ export default function Login() {
   const userSignIn = useSelector((state) => state.userSignIn);
   const { loading, error, success } = userSignIn;
 
+  const userPasswordChange = useSelector((state) => state.userPasswordChange);
+  const { success: changeSuccess } = userPasswordChange;
+
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
@@ -36,17 +40,22 @@ export default function Login() {
     password: Yup.string().required("Password is required"),
   });
   const notify = (message) => toast.error(message);
+  const notifySuccess = (message) => toast.success(message);
   useEffect(() => {
     if (error) {
       notify(error);
     }
+    if (changeSuccess) {
+      notifySuccess("Password changed successfully");
+    }
     if (success) {
       navigate("/");
     }
-  }, [error, success, navigate]);
+  }, [error, success, navigate, changeSuccess]);
 
   const submitHandler = () => {
     const lowercaseEmail = email.toLowerCase();
+    dispatch({ type: USER_PASSWORD_CHANGE_RESET });
     dispatch(signIn({ email: lowercaseEmail, password }, keepSigned));
   };
 

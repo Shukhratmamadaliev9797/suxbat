@@ -18,7 +18,7 @@ export default function FindEmail({ email, setEmail, loading }) {
   });
 
   const submitHandler = () => {
-    dispatch(findUser(email));
+    dispatch(findUser(email.toLowerCase()));
   };
   return (
     <>

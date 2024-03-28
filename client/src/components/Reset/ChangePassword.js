@@ -27,7 +27,8 @@ export default function ChangePassword({
 
   const changedPassword = () => {
     if (password === confirmPassword) {
-      dispatch(changePassword(email, password));
+      const lowerEmail = email.toLowerCase();
+      dispatch(changePassword(lowerEmail, password));
     } else {
       setErrorPasswordMatch("Password didn't match");
     }

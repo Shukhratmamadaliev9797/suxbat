@@ -117,7 +117,7 @@ export const userPasswordChangeReducer = (state = {}, action) => {
     case USER_PASSWORD_CHANGE_REQUEST:
       return { loading: true };
     case USER_PASSWORD_CHANGE_SUCCESS:
-      return { loading: false, success: true };
+      return { loading: false, success: true, message: action.payload.message };
     case USER_PASSWORD_CHANGE_FAIL:
       return { loading: false, error: action.payload };
     case USER_PASSWORD_CHANGE_RESET:
@@ -347,6 +347,7 @@ export const userGetFriendsInfoReducer = (
     case USER_GET_FRIENDS_INFO_SUCCESS:
       return {
         loading: false,
+        user: action.payload.user,
         friends: action.payload.friends,
         requests: action.payload.requests,
         followers: action.payload.followers,

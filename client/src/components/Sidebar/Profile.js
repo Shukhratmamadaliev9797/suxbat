@@ -6,50 +6,52 @@ import { Avatar } from "antd";
 export default function Profile() {
   const dispatch = useDispatch();
 
-  const userSignIn = useSelector((state) => state.userSignIn);
-  const { userInfo } = userSignIn;
-
   const userGetFriendsInfo = useSelector((state) => state.userGetFriendsInfo);
-  const { loading, error, friends, followers, following } = userGetFriendsInfo;
+  const { loading, error, user, friends, followers, following } =
+    userGetFriendsInfo;
 
   useEffect(() => {
     dispatch(getUserFriendsInfo());
   }, [dispatch]);
+  const total = user?.first_name.length + user?.last_name.length;
+
   return (
     <div className="sidebar__profile">
-      <div className="sidebar__profile-img">
-        <Avatar
-          className="sidebar__profile-img-avatar"
-          shape="round"
-          size={60}
-          src={userInfo.picture}
-        />
-        <div className="sidebar__profile-name">
-          <span>
-            {userInfo.first_name} {userInfo.last_name}
-          </span>
-          <span>{userInfo.username}</span>
-        </div>
-      </div>
       {loading ? (
         "loading"
       ) : error ? (
         error
       ) : (
-        <ul className="sidebar__profile-info">
-          <li>
-            <span>{friends?.length}</span>
-            <span>Friends</span>
-          </li>
-          <li>
-            <span>{followers?.length}</span>
-            <span>Followers</span>
-          </li>
-          <li>
-            <span>{following?.length}</span>
-            <span>Following</span>
-          </li>
-        </ul>
+        <>
+          <div className="sidebar__profile-img">
+            <Avatar
+              className="sidebar__profile-img-avatar"
+              shape="round"
+              size={60}
+              src={user.picture}
+            />
+            <div className="sidebar__profile-name">
+              <span>
+                {user.first_name} {total > 20 ? <br /> : ""} {user.last_name}
+              </span>
+              {total > 15 ? "" : <span>{user.username}</span>}
+            </div>
+          </div>
+          <ul className="sidebar__profile-info">
+            <li>
+              <span>{friends?.length}</span>
+              <span>Friends</span>
+            </li>
+            <li>
+              <span>{followers?.length}</span>
+              <span>Followers</span>
+            </li>
+            <li>
+              <span>{following?.length}</span>
+              <span>Following</span>
+            </li>
+          </ul>
+        </>
       )}
     </div>
   );

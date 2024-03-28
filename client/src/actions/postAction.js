@@ -112,29 +112,26 @@ export const reactPost = (postId, react) => {
   };
 };
 
-export const comment = (postId, comment, image) => {
-  return async (dispatch, getState) => {
-    dispatch({ type: POST_COMMENT_REQUEST });
-    const {
-      userSignIn: { userInfo },
-    } = getState();
-    try {
-      const { data } = await axios.put(
-        `/comment`,
-        { postId, comment, image },
-        { headers: { Authorization: `Bearer ${userInfo.token}` } }
-      );
-      dispatch({ type: POST_COMMENT_SUCCESS, payload: data });
-    } catch (error) {
-      dispatch({
-        type: POST_COMMENT_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
+export const comment = async (postId, comment, image, token) => {
+  try {
+    const { data } = await axios.put(
+      `/comment`,
+      {
+        postId,
+        comment,
+        image,
+      },
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
 };
 
 export const getReacts = async (postId, token) => {

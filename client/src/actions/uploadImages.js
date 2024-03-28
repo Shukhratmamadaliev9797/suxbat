@@ -36,32 +36,17 @@ export const uploadImages = (formData, path) => {
   };
 };
 
-export const uploadCommentImages = (formData, path) => {
-  return async (dispatch, getState) => {
-    dispatch({
-      type: IMAGES_COMMENT_UPLOAD_REQUEST,
-      payload: { formData, path },
+export const uploadCommentImages = async (formData, path, token) => {
+  try {
+    const { data } = await axios.post(`/uploadMedia`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
-    const {
-      userSignIn: { userInfo },
-    } = getState();
-    try {
-      const { data } = await axios.post("/uploadMedia", formData, {
-        headers: {
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      });
-      dispatch({ type: IMAGES_COMMENT_UPLOAD_SUCCESS, payload: data });
-    } catch (error) {
-      dispatch({
-        type: IMAGES_COMMENT_UPLOAD_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
 };
 
 export const listImages = (path, sort, max) => {

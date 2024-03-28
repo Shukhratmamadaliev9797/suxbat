@@ -158,7 +158,7 @@ export default function CreatePost({
           )}
           <AddToYourPost setShowPrev={() => setShowPrev((prev) => !prev)} />
           <PrButton
-            disabled={loading}
+            loading={loading || loadingImages}
             onClick={submitHandler}
             type="primary"
             width="100%"

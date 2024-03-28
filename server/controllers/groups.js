@@ -74,7 +74,7 @@ exports.findGroup = async (req, res) => {
     const group = await Group.findById(req.params.id)
       .populate("owner", "first_name last_name picture cover username")
       .populate("members", "first_name last_name picture cover username")
-      .populate("posts", "type text images user background comments")
+      .populate("posts", "type text images user background comments group")
       .populate({
         path: "posts",
         populate: {
@@ -91,7 +91,15 @@ exports.findGroup = async (req, res) => {
             select: "first_name last_name picture username",
           },
         },
+      })
+      .populate({
+        path: "posts",
+        populate: {
+          path: "group",
+          select: "title description cover owner",
+        },
       });
+
     if (group) {
       res.status(200).json(group);
     } else {

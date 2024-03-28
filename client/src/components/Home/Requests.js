@@ -30,9 +30,14 @@ export default function Requests({ requests }) {
                   className="home__requests-request-name"
                 >
                   <span>
-                    {request.first_name.length >= 15
-                      ? request.first_name
-                      : request.first_name + " " + request.last_name}
+                    {request.first_name}
+                    {request.first_name.length + request.last_name.length >
+                    20 ? (
+                      <br />
+                    ) : (
+                      ""
+                    )}
+                    {request.last_name}
                   </span>
                   <span>Mutual friends {request.friends?.length}</span>
                 </Link>
