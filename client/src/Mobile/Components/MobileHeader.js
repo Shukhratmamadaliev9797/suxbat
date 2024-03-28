@@ -11,9 +11,9 @@ import {
   removeSearchHistoryUser,
   searchUser,
 } from "../../actions/userAction";
-import { Input, Space } from "antd";
+
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Popover } from "antd";
+import { Button, Popover, Input, Badge, Avatar } from "antd";
 
 export default function MobileHeader() {
   const [searchHistory, setSearchHistory] = useState(false);
@@ -175,28 +175,31 @@ export default function MobileHeader() {
             />
           </div>
         </Popover>
-
-        <div className="header__profile-item">
-          <button className="header__profile-link" to="">
-            <Notification />
-          </button>
-        </div>
-        <div className="header__profile-item">
-          <button className="header__profile-link" to="">
-            <Messenger />
-          </button>
-        </div>
-        {!userInfo ? (
-          <div className="header__profile-login">
-            <Link>Login</Link>
-          </div>
-        ) : (
+        <div className="header__profile">
           <div className="header__profile-item">
-            <Link to="/profile" className="header__profile-linkProfile">
-              <img src={userInfo?.picture} alt={userInfo?.first_name} />
-            </Link>
+            <Avatar shape="square" size="large">
+              <i className="fas fa-bell  header__profile-item-icon"></i>
+            </Avatar>
           </div>
-        )}
+          <div className="header__profile-item">
+            <Badge>
+              <Avatar shape="square" size="large">
+                <i className="fab fa-facebook-messenger header__profile-item-icon"></i>
+              </Avatar>
+            </Badge>
+          </div>
+          {!userInfo ? (
+            <div className="header__profile-login">
+              <Link>Login</Link>
+            </div>
+          ) : (
+            <div className="header__profile-item">
+              <Link to="/profile" className="header__profile-linkProfile">
+                <Avatar shape="square" size="large" src={userInfo?.picture} />
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
