@@ -3,6 +3,9 @@ import {
   GROUP_ADD_POST_FAIL,
   GROUP_ADD_POST_REQUEST,
   GROUP_ADD_POST_SUCCESS,
+  GROUP_COVER_UPDATE_FAIL,
+  GROUP_COVER_UPDATE_REQUEST,
+  GROUP_COVER_UPDATE_SUCCESS,
   GROUP_CREATE_FAIL,
   GROUP_CREATE_REQUEST,
   GROUP_CREATE_SUCCESS,
@@ -207,6 +210,32 @@ export const addPostGroup = (groupId, postId) => {
           ? error.response.data.message
           : error.message;
       dispatch({ type: GROUP_ADD_POST_FAIL, payload: message });
+    }
+  };
+};
+
+export const updateCoverGroup = (url, groupdI) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: GROUP_COVER_UPDATE_REQUEST, payload: url, groupdI });
+    const {
+      userSignIn: { userInfo },
+    } = getState();
+    try {
+      const { data } = await axios.put(
+        `/updateGroupCover`,
+        { url, groupdI },
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+
+      dispatch({ type: GROUP_COVER_UPDATE_SUCCESS, payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: GROUP_COVER_UPDATE_FAIL, payload: message });
     }
   };
 };

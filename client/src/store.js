@@ -31,7 +31,6 @@ import {
   postAllReducer,
   postCreateReducer,
   postDeleteReducer,
-  postGetReactsReducer,
   postReactReducer,
   postSaveReducer,
   writeCommentReducer,
@@ -51,6 +50,7 @@ import {
 } from "./reducers/messageReducers";
 import {
   groupAddPostReducer,
+  groupCoverUpdateReducer,
   groupCreateReducer,
   groupFindReducer,
   groupJoinReducer,
@@ -111,6 +111,7 @@ const reducer = combineReducers({
   groupLeave: groupLeaveReducer,
   groupFind: groupFindReducer,
   groupAddPost: groupAddPostReducer,
+  groupCoverUpdate: groupCoverUpdateReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -13,7 +13,7 @@ export default function ProfileFriends() {
     requests,
     sentRequests,
   } = userGetFriendsInfo;
-  console.log(friends);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserFriendsInfo());

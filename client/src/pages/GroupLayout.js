@@ -8,6 +8,7 @@ import GroupPost from "../components/Groups/GroupPost";
 import GroupMembers from "../components/Groups/GroupMembers";
 import GroupPhotos from "../components/Groups/GroupPhotos";
 import GroupEvents from "../components/Groups/GroupEvents";
+import GroupSetting from "../components/Groups/GroupSetting";
 
 export default function GroupLayout() {
   const [groupPage, setGroupPage] = useState(0);
@@ -20,7 +21,7 @@ export default function GroupLayout() {
   useEffect(() => {
     dispatch(findGroup(id));
   }, [dispatch, id]);
-  console.log(group);
+
   return (
     <div>
       <Header />
@@ -41,6 +42,8 @@ export default function GroupLayout() {
                 <GroupPhotos group={group} />
               ) : groupPage == 3 ? (
                 <GroupEvents group={group} />
+              ) : groupPage == 4 ? (
+                <GroupSetting />
               ) : (
                 ""
               )}

@@ -25,9 +25,9 @@ export default function App() {
         }}
         breakpoints={{
           1300: { slidesPerView: 5.5 },
-          900: { slidesPerView: 4.5 },
-          500: { slidesPerView: 3.5 },
-          300: { slidesPerView: 2.5 },
+          900: { slidesPerView: 5.5 },
+          500: { slidesPerView: 4.5 },
+          300: { slidesPerView: 3.5 },
         }}
         className="mySwiper stories"
       >

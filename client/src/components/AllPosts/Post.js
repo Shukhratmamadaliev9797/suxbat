@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getReacts, reactPost } from "../../actions/postAction";
 import Comment from "./Comment";
 import { Popover } from "antd";
-import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Avatar } from "antd";
 import Masonry from "react-responsive-masonry";
 

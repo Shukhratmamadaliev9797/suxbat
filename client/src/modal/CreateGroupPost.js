@@ -87,7 +87,7 @@ export default function CreateGroupPost({
         return dataURItoBlob(image);
       });
 
-      const path = `${userInfo.username}/group_post-images`;
+      const path = `${group._id}/${userInfo.username}`;
 
       let formData = new FormData();
 
@@ -178,7 +178,7 @@ export default function CreateGroupPost({
           )}
           <AddToYourPost setShowPrev={() => setShowPrev((prev) => !prev)} />
           <PrButton
-            disabled={loading}
+            loading={loading || loadingAdd || loadingImages}
             onClick={submitHandler}
             type="primary"
             width="100%"
