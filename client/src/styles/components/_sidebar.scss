@@ -10,7 +10,7 @@
   scrollbar-width: none;
 
   &__profile {
-    background-color: $white;
+    background-color: $background-color1;
     border-radius: 0.5rem;
     box-shadow: $box-shadow;
     margin-bottom: 1rem;
@@ -71,7 +71,7 @@
     }
   }
   .newsFeed {
-    background-color: $white;
+    background-color: $background-color1;
     border-radius: 0.5rem;
     box-shadow: $box-shadow;
     margin-bottom: 1rem;
@@ -88,6 +88,9 @@
       }
     }
     &__link {
+      &-icon {
+        font-size: 1.3rem;
+      }
       &-active {
         padding: 0.5rem 10rem 0.5rem 0.5rem;
         display: flex;

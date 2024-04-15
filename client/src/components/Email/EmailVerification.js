@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { sendVerificationLink } from "../actions/emailAction";
+import { sendVerificationLink } from "../../actions/emailAction";
 import { Alert } from "antd";
 export default function EmailVerification() {
   const dispatch = useDispatch();

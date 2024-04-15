@@ -1,10 +1,15 @@
+:root {
+  --background-color: #f8f8fc;
+  --background-color1: #fff;
+}
+
 $geekblue-1: #e2ebfd;
 $geekblue-2: #85a5ff;
 $geekblue-3: #2f54eb;
 $geekblue-4: #10239e;
 $geekblue-5: #030852;
-$background-color: #f8f8fc;
-$background-color1: #fff;
+$background-color: var(--background-color);
+$background-color1: var(--background-color1);
 $white: #fff;
 
 $heading-color: #000000e0;

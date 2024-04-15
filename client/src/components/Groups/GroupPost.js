@@ -3,7 +3,7 @@ import CreatePostGroup from "../CreatePost/CreatePostGroup";
 import Post from "../AllPosts/Post";
 import { useDispatch, useSelector } from "react-redux";
 import { POST_CREATE_RESET } from "../../constants/postConstants";
-import { Divider } from "antd";
+import { Divider, Empty } from "antd";
 import { Link } from "react-router-dom";
 
 export default function GroupPost({ group }) {
@@ -25,6 +25,14 @@ export default function GroupPost({ group }) {
     <div className="groupPost">
       <div>
         <CreatePostGroup group={group} />
+        {updatedPosts.length <= 0 ? (
+          <Empty
+            className="background-help"
+            description={<span>No post</span>}
+          />
+        ) : (
+          ""
+        )}
         {updatedPosts.reverse().map((post, i) => {
           return <Post key={i} post={post} />;
         })}

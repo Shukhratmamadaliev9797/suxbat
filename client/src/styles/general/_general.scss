@@ -56,3 +56,13 @@ ul {
 .ant-tabs-nav {
   margin: 0 !important;
 }
+
+.background-help {
+  background-color: $white;
+  box-shadow: $box-shadow;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-inline: 0px !important;
+  border-radius: 0.5rem;
+}

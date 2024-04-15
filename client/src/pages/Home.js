@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CreatePostHome from "../components/CreatePost/CreatePostHome";
 import Stories from "../components/Strory/Stories";
-import EmailVerification from "../components/EmailVerification";
+
 import { useDispatch, useSelector } from "react-redux";
 import Posts from "../components/AllPosts/Posts";
 import Friends from "../components/Home/Friends";
@@ -9,6 +9,7 @@ import { detailsProfile, getUserFriendsInfo } from "../actions/userAction";
 import Requests from "../components/Home/Requests";
 import SuggestFriends from "../components/Home/SuggestFriends";
 import { useMediaQuery } from "react-responsive";
+import EmailVerification from "../components/Email/EmailVerification";
 
 export default function Home() {
   const [check, setCheck] = useState();

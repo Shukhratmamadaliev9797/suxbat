@@ -58,6 +58,13 @@ import {
   groupSearchReducer,
   yourGroupListReducer,
 } from "./reducers/groupReducer";
+import {
+  ProductCategoriesListReducer,
+  ProductListReducer,
+  productCreateReducer,
+  productFindReducer,
+  yourProductListReducer,
+} from "./reducers/productReducers";
 
 const initialState = {
   userSignIn: {
@@ -112,6 +119,11 @@ const reducer = combineReducers({
   groupFind: groupFindReducer,
   groupAddPost: groupAddPostReducer,
   groupCoverUpdate: groupCoverUpdateReducer,
+  productCreate: productCreateReducer,
+  yourProductList: yourProductListReducer,
+  productList: ProductListReducer,
+  productCategoriesList: ProductCategoriesListReducer,
+  productFind: productFindReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

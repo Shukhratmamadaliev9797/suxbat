@@ -23,7 +23,7 @@ export default function Account() {
               }
             >
               <div className="newsFeed__link-img">
-                <i className="settings_filled_icon"></i>
+                <i class="fas fa-cogs newsFeed__link-icon"></i>
               </div>
 
               <span>Setting</span>
@@ -37,26 +37,13 @@ export default function Account() {
               }
             >
               <div className="newsFeed__link-img">
-                <i className="report_filled_icon"></i>
+                <i class="fas fa-exclamation-circle newsFeed__link-icon"></i>
               </div>
 
               <span>Report</span>
             </NavLink>
           </div>
-          <div className="newsFeed__link">
-            <NavLink
-              to="/display"
-              className={({ isActive }) =>
-                isActive ? "newsFeed__link-active" : "newsFeed__link-link"
-              }
-            >
-              <div className="newsFeed__link-img">
-                <i className="dark_filled_icon"></i>
-              </div>
 
-              <span>Display</span>
-            </NavLink>
-          </div>
           <div className="newsFeed__link">
             <NavLink
               to="/help"
@@ -65,7 +52,7 @@ export default function Account() {
               }
             >
               <div className="newsFeed__link-img">
-                <i className="help_filled_icon"></i>
+                <i class="fas fa-question-circle newsFeed__link-icon"></i>
               </div>
 
               <span>Help</span>
@@ -75,7 +62,7 @@ export default function Account() {
           <div className="newsFeed__link">
             <Link className={"newsFeed__link-link"} onClick={signOutHandler}>
               <div className="newsFeed__link-img">
-                <i className="logout_filled_icon"></i>
+                <i class="fas fa-sign-out-alt newsFeed__link-icon"></i>
               </div>
 
               <span>Sign Out</span>

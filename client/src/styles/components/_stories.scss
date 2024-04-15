@@ -1,18 +1,22 @@
-.swiper {
+.stories {
   width: 100%;
   height: 13rem;
+
   @media only screen and (max-width: "800px") {
+    padding-left: 1rem !important;
     height: 10rem;
   }
 }
-
-.swiper-slide {
+.story {
   position: relative;
-  // background: $white-color;
   height: 100px;
   border-radius: 0.5rem;
   overflow: hidden;
-
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.2px);
+  -webkit-backdrop-filter: blur(4.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   &::after {
     -webkit-box-shadow: inset 3px -49px 98px -10px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 3px -49px 98px -10px rgba(0, 0, 0, 0.75);
@@ -24,25 +28,12 @@
     top: 0;
     width: 100%;
   }
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.stories {
-  @media only screen and (max-width: "800px") {
-    padding-left: 1rem !important;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-}
-.story {
-  background: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4.2px);
-  -webkit-backdrop-filter: blur(4.2px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
   &__account {
     z-index: 10;
     position: absolute;

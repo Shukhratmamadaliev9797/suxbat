@@ -8,6 +8,7 @@ const {
   leaveGroup,
   findGroup,
   addPostGroup,
+  updateGroupCover,
 } = require("../controllers/groups");
 
 const route = express.Router();
@@ -19,4 +20,5 @@ route.put("/joinGroup", authUser, joinGroup);
 route.put("/leaveGroup", authUser, leaveGroup);
 route.get("/findGroup/:id", authUser, findGroup);
 route.put("/addPostGroup", authUser, addPostGroup);
+route.put("/updateGroupCover", authUser, updateGroupCover);
 module.exports = route;

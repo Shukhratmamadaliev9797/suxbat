@@ -177,8 +177,11 @@
     padding: 0.8rem;
     position: relative;
     overflow-y: scroll;
-    max-height: 70vh;
+    max-height: 65vh;
     z-index: 0;
+    img {
+      border-radius: 0.5rem;
+    }
     &-action {
       display: flex;
       align-items: center;
@@ -213,104 +216,6 @@
             margin-right: 0.3rem;
           }
         }
-      }
-    }
-  }
-  &__imagePreview1 {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    overflow-x: scroll;
-    img,
-    video {
-      width: 100%;
-      height: 25rem;
-      object-fit: cover;
-    }
-  }
-  &__imagePreview2 {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.1rem;
-    img,
-    video {
-      width: 100%;
-      height: 25rem;
-      object-fit: cover;
-    }
-  }
-  &__imagePreview3 {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.1rem;
-    img,
-    video {
-      width: 100%;
-      height: 20rem;
-      object-fit: cover;
-      &:first-child {
-        grid-column: 1/3;
-      }
-    }
-  }
-  &__imagePreview4 {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.1rem;
-    img,
-    video {
-      width: 100%;
-      height: 20rem;
-      object-fit: cover;
-    }
-  }
-  &__imagePreview5 {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.1rem;
-    img,
-    video {
-      width: 100%;
-      height: 15rem;
-      object-fit: cover;
-      &:nth-child(3) {
-        grid-column: 1/3;
-      }
-    }
-  }
-  &__imagePreview6 {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.1rem;
-    img,
-    video {
-      width: 100%;
-      height: 15rem;
-      object-fit: cover;
-    }
-  }
-  &__singleGridImage {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.1rem;
-    img,
-    video {
-      width: 100%;
-      height: 20rem;
-      object-fit: cover;
-      &:first-child {
-        grid-column: 1/3;
       }
     }
   }

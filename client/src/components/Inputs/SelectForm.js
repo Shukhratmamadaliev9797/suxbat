@@ -3,7 +3,13 @@ import { Select, Space } from "antd";
 import { useField } from "formik";
 import { useMediaQuery } from "react-responsive";
 
-export default function SelectForm({ label, values, handleChange, ...props }) {
+export default function SelectForm({
+  label,
+  values,
+  handleChange,
+  placeholder,
+  ...props
+}) {
   const [field, meta, helpers] = useField(props);
   const tablet = useMediaQuery({
     query: "(max-width: 992px)",
@@ -17,6 +23,8 @@ export default function SelectForm({ label, values, handleChange, ...props }) {
     <Space direction="vertical" style={{ display: "flex" }}>
       {label && <label>{label}</label>}
       <Select
+        className="input__input"
+        placeholder={placeholder}
         defaultValue={field.value} // Use formik field value as default
         style={{ width: "100%" }}
         options={values?.map((value) => {

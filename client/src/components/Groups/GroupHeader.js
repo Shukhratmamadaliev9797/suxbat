@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "../../helper/getCroppedImg";
-import { updateCoverGroup } from "../../actions/groupAction";
+import {
+  joinGroup,
+  leaveGroup,
+  updateCoverGroup,
+} from "../../actions/groupAction";
 import { IMAGES_UPLOAD_RESET } from "../../constants/uploadImagesConstants";
 import { GROUP_COVER_UPDATE_RESET } from "../../constants/groupConstants";
 import { uploadImages } from "../../actions/uploadImages";
@@ -37,6 +41,12 @@ export default function GroupHeader({ group, setGroupPage }) {
   const { error: errorUpdateCover, success: successUpdateCover } =
     groupCoverUpdate;
 
+  const groupJoin = useSelector((state) => state.groupJoin);
+  const { error: errorJoin, success: successJoin } = groupJoin;
+
+  const groupLeave = useSelector((state) => state.groupLeave);
+  const { error: errorLeave, success: successLeave } = groupLeave;
+
   // State to track whether the user is a member of the group or not
   const [isMember, setIsMember] = useState(
     group.members.some((member) => member._id === userInfo.id)
@@ -52,16 +62,18 @@ export default function GroupHeader({ group, setGroupPage }) {
     setIsMember(false); // Update state when user leaves the group
   };
   const notify = (message) => toast.error(message);
-
+  const notifySuccess = (message) => toast.success(message);
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
 
   useEffect(() => {
-    if (errorImage || errorUpdateCover) {
-      notify(errorImage || errorUpdateCover);
+    if (errorImage || errorUpdateCover || errorLeave || errorJoin) {
+      notify(errorImage || errorUpdateCover || errorLeave || errorJoin);
     }
-
+    if (successJoin || successLeave) {
+      notifySuccess(successJoin || successLeave);
+    }
     if (successUploadImage) {
       if (allImages[0]?.url.includes("cover_picture")) {
         dispatch(updateCoverGroup(allImages[0].url, group._id));
@@ -69,7 +81,15 @@ export default function GroupHeader({ group, setGroupPage }) {
     }
 
     setWidth(coverRef.current.clientWidth);
-  }, [allImages, dispatch, errorImage, errorUpdateCover, successUploadImage]);
+  }, [
+    allImages,
+    dispatch,
+    errorImage,
+    errorUpdateCover,
+    successUploadImage,
+    successJoin,
+    successLeave,
+  ]);
 
   useEffect(() => {
     if (successUpdateCover) {
@@ -141,7 +161,7 @@ export default function GroupHeader({ group, setGroupPage }) {
   };
   const own = userInfo.id === group?.owner._id;
   const items = [
-    {
+    own && {
       key: "1",
       label: (
         <div
@@ -194,6 +214,19 @@ export default function GroupHeader({ group, setGroupPage }) {
 
   return (
     <div className="groupHeader">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        className="snackbar"
+      />
       <input
         type="file"
         ref={inputRef}
@@ -242,47 +275,18 @@ export default function GroupHeader({ group, setGroupPage }) {
         </div>
 
         <div className="groupHeader__action">
-          {userInfo.id === group.owner._id && (
-            <Dropdown
-              menu={{
-                items,
-              }}
-              placement="bottomRight"
-              arrow
-              className="post__menu"
-            >
-              <PrButton width="3rem" type="primary" ghost size="medium">
-                <i className="fas fa-ellipsis-h"></i>
-              </PrButton>
-            </Dropdown>
-          )}
-          {userInfo.id !== group.owner._id && isMember === true && (
-            <>
-              <PrButton
-                onClick={leaveHandler}
-                width="5rem"
-                type="primary"
-                ghost
-                danger
-                size="medium"
-              >
-                Leave
-              </PrButton>
-            </>
-          )}
-          {userInfo.id !== group.owner._id && isMember === false && (
-            <>
-              <PrButton
-                onClick={joinHandler}
-                width="5rem"
-                type="primary"
-                ghost
-                size="medium"
-              >
-                Join
-              </PrButton>
-            </>
-          )}
+          <Dropdown
+            menu={{
+              items,
+            }}
+            placement="bottomRight"
+            arrow
+            className="post__menu"
+          >
+            <PrButton width="3rem" type="primary" ghost size="medium">
+              <i className="fas fa-ellipsis-h"></i>
+            </PrButton>
+          </Dropdown>
         </div>
       </div>
       <div className="groupHeader__members">

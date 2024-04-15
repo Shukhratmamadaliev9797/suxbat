@@ -125,3 +125,13 @@ exports.addPostGroup = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.updateGroupCover = async (req, res) => {
+  try {
+    const { url, groupdI } = req.body;
+    const update = await Group.findByIdAndUpdate(groupdI, { cover: url });
+    res.status(200).json({ url });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

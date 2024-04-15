@@ -70,6 +70,9 @@ const userSchema = mongoose.Schema(
     followers: [{ type: ObjectId, ref: "User" }],
     requests: [{ type: ObjectId, ref: "User" }],
     story: { type: Array },
+    setting: {
+      darkMode: { type: Boolean, default: false },
+    },
     savedPosts: [
       {
         post: {

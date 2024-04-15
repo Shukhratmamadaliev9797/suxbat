@@ -311,7 +311,10 @@ export const userGetSearchHistoryReducer = (
   }
 };
 
-export const userSuggestFriendsReducer = (state = {}, action) => {
+export const userSuggestFriendsReducer = (
+  state = { loading: true },
+  action
+) => {
   switch (action.type) {
     case USER_SUGGEST_FRIENDS_REQUEST:
       return { loading: true };

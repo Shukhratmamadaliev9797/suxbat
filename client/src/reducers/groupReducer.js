@@ -83,7 +83,7 @@ export const groupJoinReducer = (state = { loading: false }, action) => {
     case GROUP_JOIN_REQUEST:
       return { loading: true };
     case GROUP_JOIN_SUCCESS:
-      return { loading: false, success: true };
+      return { loading: false, success: action.payload.message };
     case GROUP_JOIN_FAIL:
       return { loading: false, error: action.payload };
     default:
@@ -96,7 +96,7 @@ export const groupLeaveReducer = (state = {}, action) => {
     case GROUP_LEAVE_REQUEST:
       return { loading: true };
     case GROUP_LEAVE_SUCCESS:
-      return { loading: false, success: true };
+      return { loading: false, success: action.payload.message };
     case GROUP_LEAVE_FAIL:
       return { loading: false, error: action.payload };
     default:

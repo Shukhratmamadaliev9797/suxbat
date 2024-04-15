@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import EmojiBackground from "./EmojiBackground";
+import Masonry from "react-responsive-masonry";
 
 export default function ImagePreview({
   text,
@@ -83,34 +84,24 @@ export default function ImagePreview({
               <i className="exit_icon" onClick={() => setImages([])}></i>
             </div>
 
-            <div
-              className={`imagePreview__${
-                images.length === 1
-                  ? "imagePreview1"
-                  : images.length === 2
-                  ? "imagePreview2"
-                  : images.length === 3
-                  ? "imagePreview3"
-                  : images.length === 4
-                  ? "imagePreview4"
-                  : images.length === 5
-                  ? "imagePreview5"
-                  : images.length % 2 === 0
-                  ? "imagePreview6"
-                  : "singleGridImage"
-              }`}
-            >
-              {images.map((image, i) => {
-                const mediaType = getMediaType(image);
-                return mediaType === "image" ? (
-                  <img src={image} key={i} alt="Image" />
-                ) : mediaType === "video" ? (
-                  <video key={i} controls>
-                    <source src={image} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : null;
-              })}
+            <div>
+              <Masonry
+                columnsCount={images.length === 1 ? 1 : 2}
+                gutter="10px"
+                className=""
+              >
+                {images.map((media, i) => {
+                  const mediaType = getMediaType(media);
+                  return mediaType === "image" ? (
+                    <img src={media} alt={media} key={i} />
+                  ) : mediaType === "video" ? (
+                    <Player key={i} className="video" fluid={false} src={media}>
+                      <BigPlayButton position="center" />
+                      <LoadingSpinner />
+                    </Player>
+                  ) : null;
+                })}
+              </Masonry>
             </div>
           </div>
         ) : (

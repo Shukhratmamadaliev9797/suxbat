@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Collapse, Space, Avatar, Card, Tooltip } from "antd";
+import { Collapse, Space, Avatar, Card, Tooltip, Breadcrumb } from "antd";
 import {
   UserOutlined,
   UserDeleteOutlined,
   CheckOutlined,
   CloseOutlined,
-  SendOutlined,
   XOutlined,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -81,6 +80,17 @@ export default function Friends() {
 
   return (
     <Space direction="vertical" style={{ display: "flex", width: "100%" }}>
+      <Breadcrumb
+        items={[
+          {
+            title: <Link to="/">Home</Link>,
+          },
+
+          {
+            title: "Friends",
+          },
+        ]}
+      />
       <Collapse
         className="friends__container"
         collapsible="header"

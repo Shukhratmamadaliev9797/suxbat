@@ -29,43 +29,43 @@ export default function App() {
           500: { slidesPerView: 4.5 },
           300: { slidesPerView: 3.5 },
         }}
-        className="mySwiper stories"
+        className="stories"
       >
-        <SwiperSlide onClick={() => setCreateStory(true)}>
+        <SwiperSlide className="story" onClick={() => setCreateStory(true)}>
           <div className="story__account">
             <div className="add-icon">+</div>
             <span>Add Story</span>
           </div>
         </SwiperSlide>
-        <SwiperSlide onClick={() => setStoryOpen(true)}>
+        <SwiperSlide className="story" onClick={() => setStoryOpen(true)}>
           <img src="/stories/1.jpg" alt="" />
           <div className="story__account">
             <img src="/stories/profile1.jpg" alt="" />
             <span>Shukhrat</span>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="story">
           <img src="/stories/2.png" alt="" />
           <div className="story__account">
             <img src="/stories/profile2.jpg" alt="" />
             <span>Shukhrat</span>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="story">
           <img src="/stories/3.jpg" alt="" />
           <div className="story__account">
             <img src="/stories/profile2.jpg" alt="" />
             <span>Shukhrat</span>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="story">
           <img src="/stories/4.jpg" alt="" />
           <div className="story__account">
             <img src="/stories/profile4.jfif" alt="" />
             <span>Shukhrat</span>
           </div>
         </SwiperSlide>
-        <SwiperSlide></SwiperSlide>
+        <SwiperSlide className="story"></SwiperSlide>
         <SwiperSlide></SwiperSlide>
         <SwiperSlide></SwiperSlide>
         <SwiperSlide></SwiperSlide>

@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Collapse, Space, Avatar, Input, Alert, Empty, Button } from "antd";
+import {
+  Collapse,
+  Space,
+  Input,
+  Alert,
+  Empty,
+  Button,
+  Breadcrumb,
+  Divider,
+} from "antd";
 import PrButton from "../components/Buttons/PrButton";
 import CreateGroup from "../modal/CreateGroup";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +16,7 @@ import { useEffect } from "react";
 import { listYourGroups, searchGroup } from "../actions/groupAction";
 import { GROUP_CREATE_RESET } from "../constants/groupConstants";
 import Group from "../components/Groups/Group";
+import { Link } from "react-router-dom";
 
 export default function Groups() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,6 +58,17 @@ export default function Groups() {
     <>
       <CreateGroup open={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <Space direction="vertical" style={{ display: "flex", width: "100%" }}>
+        <Breadcrumb
+          items={[
+            {
+              title: <Link to="/">Home</Link>,
+            },
+
+            {
+              title: "Groups",
+            },
+          ]}
+        />
         <div className="groups__search">
           <Search
             placeholder="Search groups"
@@ -106,6 +127,7 @@ export default function Groups() {
                             type="primary"
                             ghost
                             onClick={() => setIsModalOpen(true)}
+                            size="medium"
                           >
                             Create new group
                           </Button>
@@ -115,13 +137,15 @@ export default function Groups() {
                           <div className="groups__create">
                             <PrButton
                               type="primary"
-                              width="10rem"
+                              width="9rem"
                               onClick={() => setIsModalOpen(true)}
+                              size="medium"
+                              ghost
                             >
                               Create new group
                             </PrButton>
                           </div>
-
+                          <Divider />
                           {loading ? (
                             "loading"
                           ) : error ? (

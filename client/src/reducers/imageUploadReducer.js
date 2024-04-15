@@ -42,7 +42,10 @@ export const imageCommentUploadReducer = (state = {}, action) => {
   }
 };
 
-export const imagesListReducer = (state = { images: [] }, action) => {
+export const imagesListReducer = (
+  state = { loading: true, images: [] },
+  action
+) => {
   switch (action.type) {
     case IMAGES_LIST_REQUEST:
       return { loading: true };

@@ -7,6 +7,8 @@ import Message from "../components/Messenger/Message";
 import { listConversation } from "../actions/conversationActions";
 import { listMessage } from "../actions/messageActions";
 import { MESSAGES_CREATE_RESET } from "../constants/messageConstants";
+import { Breadcrumb, Space } from "antd";
+import { Link } from "react-router-dom";
 
 export default function Messages({ notificationCount, setNotificationCount }) {
   const [currentChat, setCurrentChat] = useState();
@@ -145,86 +147,99 @@ export default function Messages({ notificationCount, setNotificationCount }) {
   };
 
   return (
-    <div className="messages">
-      <div className="messages__receivers">
-        <div className="messages__receivers-title">
-          <h6>
-            Chat
-            {notificationCount > 0 && <span>({notificationCount} new)</span>}
-          </h6>
-        </div>
-        <div className="messages__chaters">
-          {listLoading
-            ? "Loading"
-            : listError
-            ? listError
-            : conversationLists.map((conversation) => {
-                // Find the last message for this conversation
-                const lastMessage = messages.find(
-                  (message) => message.conversationId === conversation._id
-                );
+    <Space direction="vertical" style={{ display: "flex", width: "100%" }}>
+      <Breadcrumb
+        items={[
+          {
+            title: <Link to="/">Home</Link>,
+          },
 
-                return (
-                  <div
-                    key={conversation._id}
-                    onClick={() => {
-                      setCurrentChat(conversation.conversation);
-                      setNotificationCount(0);
-                    }}
-                  >
-                    <Conversation
-                      userId={userInfo.id}
-                      conversation={conversation.conversation}
-                      lastMessage={conversation.lastMessage}
-                    />
-                  </div>
-                );
-              })}
+          {
+            title: "Messenger",
+          },
+        ]}
+      />
+      <div className="messages">
+        <div className="messages__receivers">
+          <div className="messages__receivers-title">
+            <h6>
+              Chat
+              {notificationCount > 0 && <span>({notificationCount} new)</span>}
+            </h6>
+          </div>
+          <div className="messages__chaters">
+            {listLoading
+              ? "Loading"
+              : listError
+              ? listError
+              : conversationLists.map((conversation) => {
+                  // Find the last message for this conversation
+                  const lastMessage = messages.find(
+                    (message) => message.conversationId === conversation._id
+                  );
+
+                  return (
+                    <div
+                      key={conversation._id}
+                      onClick={() => {
+                        setCurrentChat(conversation.conversation);
+                        setNotificationCount(0);
+                      }}
+                    >
+                      <Conversation
+                        userId={userInfo.id}
+                        conversation={conversation.conversation}
+                        lastMessage={conversation.lastMessage}
+                      />
+                    </div>
+                  );
+                })}
+          </div>
+        </div>
+        <div className="messages__chat">
+          {currentChat ? (
+            <>
+              {" "}
+              <div className="messages__receivers-title">
+                <h6>
+                  {user?.first_name} {user?.last_name}
+                </h6>
+              </div>
+              <div className="messages__chatBox">
+                {messages?.map((message) => {
+                  return (
+                    <div ref={scrollRef} key={message._id}>
+                      <Message
+                        message={message}
+                        own={message?.sender?._id === userInfo.id}
+                        user={user}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              <form
+                onSubmit={submitHandler}
+                className="messages__chat-input"
+                action=""
+              >
+                <input
+                  type="text"
+                  placeholder="Message here..."
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  required
+                />
+                <button type="submit">Send</button>
+              </form>{" "}
+            </>
+          ) : (
+            <div className="messages__noChat">
+              <span>Select user to start chatting</span>
+            </div>
+          )}
         </div>
       </div>
-      <div className="messages__chat">
-        {currentChat ? (
-          <>
-            {" "}
-            <div className="messages__receivers-title">
-              <h6>
-                {user?.first_name} {user?.last_name}
-              </h6>
-            </div>
-            <div className="messages__chatBox">
-              {messages?.map((message) => {
-                return (
-                  <div ref={scrollRef} key={message._id}>
-                    <Message
-                      message={message}
-                      own={message?.sender?._id === userInfo.id}
-                      user={user}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-            <form
-              onSubmit={submitHandler}
-              className="messages__chat-input"
-              action=""
-            >
-              <input
-                type="text"
-                placeholder="Message here..."
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                required
-              />
-              <button type="submit">Send</button>
-            </form>{" "}
-          </>
-        ) : (
-          <div className="messages__noChat">
-            <span>Select user to start chatting</span>
-          </div>
-        )}
-      </div>
-    </div>
+    </Space>
   );
 }

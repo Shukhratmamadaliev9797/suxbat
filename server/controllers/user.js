@@ -96,6 +96,7 @@ exports.register = async (req, res) => {
       friends: user.friends,
       followers: user.followers,
       following: user.following,
+      setting: user.setting,
       message: "Register Success! Please verify your email.",
     });
   } catch (error) {
@@ -151,6 +152,7 @@ exports.login = async (req, res) => {
       friends: user.friends,
       followers: user.followers,
       following: user.following,
+      setting: user.setting,
       message: "Register Success! Please verify your email.",
     });
   } catch (error) {
