@@ -684,3 +684,25 @@ exports.suggestFriends = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.darkMode = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (user) {
+      if (user.setting.darkMode === true) {
+        user.setting.darkMode = false;
+        const updatedUser = await user.save();
+        res.json(updatedUser);
+      } else {
+        user.setting.darkMode = true;
+        const updatedUser = await user.save();
+        res.json(updatedUser);
+      }
+    } else {
+      res.json({ message: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

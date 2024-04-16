@@ -30,15 +30,23 @@ function App() {
   const userSignIn = useSelector((state) => state.userSignIn);
   const { userInfo } = userSignIn;
 
+  const [darkMode, setDarkMode] = useState(() => {
+    return JSON.parse(localStorage.getItem("darkMode")) || false;
+  });
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    // Update localStorage
+    localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
+  };
+
   const root = document.documentElement;
-  root.style.setProperty(
-    "--background-color",
-    userInfo?.setting?.darkMode ? "#292929 " : ""
-  );
-  root.style.setProperty(
-    "--background-color1",
-    userInfo?.setting?.darkMode ? "#3d3d3d" : ""
-  );
+  root.style.setProperty("--background-color", darkMode ? "#2f2f2f " : "");
+  root.style.setProperty("--background-color1", darkMode ? "#3d3d3d" : "");
+  root.style.setProperty("--heading-color", darkMode ? "#ffffff" : "");
+  root.style.setProperty("--secondary-color", darkMode ? "#fafafa" : "");
+  root.style.setProperty("--text-color", darkMode ? "#f5f5f5" : "");
   return (
     <div className="App">
       <Routes>
@@ -71,7 +79,12 @@ function App() {
                 element={<SearchedProducts />}
               />
             </Route>
-            <Route path="/setting" element={<Setting />} />
+            <Route
+              path="/setting"
+              element={
+                <Setting darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+              }
+            />
           </Route>
 
           <Route path="/profile" element={<ProfileLayout />} />

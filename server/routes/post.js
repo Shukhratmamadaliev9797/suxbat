@@ -12,7 +12,7 @@ const {
 const route = express.Router();
 
 route.post("/createPost", authUser, createPost);
-route.get("/getAllPost", getAllPost);
+route.get("/getAllPost", authUser, getAllPost);
 route.put("/comment", authUser, comment);
 route.put("/savePost/:id", authUser, savePost);
 route.delete("/deletePost/:id", authUser, deletePost);

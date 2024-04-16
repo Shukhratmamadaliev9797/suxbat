@@ -1,12 +1,21 @@
 import { Breadcrumb, Descriptions, Switch } from "antd";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { switchDarkMode } from "../actions/userAction";
+import { USER_DARK_MODE_RESET } from "../constants/userConstants";
 
-export default function Setting() {
+export default function Setting({ darkMode, toggleDarkMode }) {
+  const dispatch = useDispatch();
   const userSignIn = useSelector((state) => state.userSignIn);
   const { userInfo } = userSignIn;
 
+  const darkModeSwitch = useSelector((state) => state.darkModeSwitch);
+  const { success } = darkModeSwitch;
+
+  const darkModeHandler = () => {
+    dispatch(switchDarkMode());
+  };
   return (
     <div>
       <Breadcrumb
@@ -34,7 +43,8 @@ export default function Setting() {
                   <Switch
                     checkedChildren="On"
                     unCheckedChildren="Off"
-                    value={userInfo.setting.darkMode}
+                    checked={darkMode}
+                    onChange={toggleDarkMode}
                   />
                 </>
               ),

@@ -67,6 +67,10 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
   USER_DETAILS_RESET,
+  USER_DARK_MODE_REQUEST,
+  USER_DARK_MODE_SUCCESS,
+  USER_DARK_MODE_FAIL,
+  USER_DARK_MODE_RESET,
 } from "../constants/userConstants";
 
 export const userRegisterReducer = (state = { success: false }, action) => {
@@ -373,6 +377,21 @@ export const userDetailsReducer = (state = { loading: true }, action) => {
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     case USER_DETAILS_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const darkModeSwitchReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_DARK_MODE_REQUEST:
+      return { loading: true };
+    case USER_DARK_MODE_SUCCESS:
+      return { loading: false, success: true };
+    case USER_DARK_MODE_FAIL:
+      return { loading: false, error: action.payload };
+    case USER_DARK_MODE_RESET:
       return {};
     default:
       return state;

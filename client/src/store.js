@@ -7,6 +7,7 @@ import {
   verifyEmailReducer,
 } from "./reducers/emailReducer";
 import {
+  darkModeSwitchReducer,
   profileAcceptFriendRequestReducer,
   profileCoverUpdateReducer,
   profileDeleteFriendRequestReducer,
@@ -90,6 +91,7 @@ const reducer = combineReducers({
   resetPasswordCodeValidate: validateResetCodeReducer,
   userPasswordChange: userPasswordChangeReducer,
   userSuggestFriends: userSuggestFriendsReducer,
+  darkModeSwitch: darkModeSwitchReducer,
   postCreate: postCreateReducer,
   postAll: postAllReducer,
   postReact: postReactReducer,

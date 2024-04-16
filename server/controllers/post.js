@@ -16,26 +16,24 @@ exports.createPost = async (req, res) => {
 
 exports.getAllPost = async (req, res) => {
   try {
-    // const followingTemp = await User.findById(req.user.id).select("following");
-    // const following = followingTemp.following;
-    // const followingPosts = await Post.find({ user: { $in: following } }) // using $in operator
-    //   .populate("user", "first_name last_name picture username cover gender")
-    //   .populate("comments.commentBy", "first_name last_name picture username")
-    //   .populate("group", "title description cover owner")
-    //   .sort({ createdAt: -1 });
+    const followingTemp = await User.findById(req.user.id).select("following");
+    const following = followingTemp.following;
+    const followingPosts = await Post.find({ user: { $in: following } }) // using $in operator
+      .populate("user", "first_name last_name picture username cover gender")
+      .populate("comments.commentBy", "first_name last_name picture username")
+      .populate("group", "title description cover owner")
+      .sort({ createdAt: -1 });
 
-    // const userPosts = await Post.find({ user: req.user.id })
-    //   .populate("user", "first_name last_name picture username cover gender")
-    //   .populate("comments.commentBy", "first_name last_name picture username")
-    //   .populate("group", "title description cover owner")
-    //   .sort({ createdAt: -1 });
-    // followingPosts.push(...[...userPosts]);
-    // followingPosts.sort((a, b) => {
-    //   return b.createdAt - a.createdAt;
-    // });
-
-    const posts = await Post.find({});
-    res.json(posts);
+    const userPosts = await Post.find({ user: req.user.id })
+      .populate("user", "first_name last_name picture username cover gender")
+      .populate("comments.commentBy", "first_name last_name picture username")
+      .populate("group", "title description cover owner")
+      .sort({ createdAt: -1 });
+    followingPosts.push(...[...userPosts]);
+    followingPosts.sort((a, b) => {
+      return b.createdAt - a.createdAt;
+    });
+    res.json(followingPosts);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

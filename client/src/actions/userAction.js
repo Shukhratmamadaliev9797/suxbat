@@ -35,6 +35,9 @@ import {
   USER_ADD_SEARCH_HISTORY_FAIL,
   USER_ADD_SEARCH_HISTORY_REQUEST,
   USER_ADD_SEARCH_HISTORY_SUCCESS,
+  USER_DARK_MODE_FAIL,
+  USER_DARK_MODE_REQUEST,
+  USER_DARK_MODE_SUCCESS,
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
@@ -699,6 +702,39 @@ export const detailsUser = (userId) => {
           ? error.response.data?.message
           : error.message;
       dispatch({ type: USER_DETAILS_FAIL, payload: message });
+    }
+  };
+};
+
+export const switchDarkMode = () => {
+  return async (dispatch, getState) => {
+    dispatch({ type: USER_DARK_MODE_REQUEST });
+    const {
+      userSignIn: { userInfo },
+    } = getState();
+
+    try {
+      const { data } = await axios.put(
+        `/darkMode`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      let updatedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+      // Update the picture property
+      updatedUserInfo.setting.darkMode = data.setting.darkMode;
+
+      // Set the updated userInfo back into localStorage
+      localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
+      dispatch({ type: USER_DARK_MODE_SUCCESS, payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: USER_DARK_MODE_FAIL, payload: message });
     }
   };
 };

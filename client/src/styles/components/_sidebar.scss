@@ -30,6 +30,7 @@
     &-name {
       display: flex;
       flex-direction: column;
+
       @media only screen and (max-width: "1600px") {
         text-align: center;
       }
@@ -40,7 +41,7 @@
         &:first-child {
           font-weight: bold;
           font-size: 1rem;
-          color: $text-color;
+          color: $text-color !important;
         }
         &:last-child {
           color: $secondary-color;

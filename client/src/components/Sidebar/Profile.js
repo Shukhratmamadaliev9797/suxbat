@@ -34,7 +34,7 @@ export default function Profile() {
               <span>
                 {user.first_name} {total > 20 ? <br /> : ""} {user.last_name}
               </span>
-              {total > 15 ? "" : <span>{user.username}</span>}
+              {total > 20 ? "" : <span>{user.username}</span>}
             </div>
           </div>
           <ul className="sidebar__profile-info">

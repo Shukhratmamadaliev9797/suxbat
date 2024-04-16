@@ -26,6 +26,7 @@ const {
   removeFromSearch,
   getFriendsPageInfo,
   suggestFriends,
+  darkMode,
 } = require("../controllers/user");
 const { authUser } = require("../middlewares/auth");
 
@@ -57,4 +58,5 @@ route.get("/getSearchHistory", authUser, getSearchHistory);
 route.put("/removeFromSearch", authUser, removeFromSearch);
 route.get("/getFriendsPageInfo", authUser, getFriendsPageInfo);
 route.get("/suggestFriends", authUser, suggestFriends);
+route.put("/darkMode", authUser, darkMode);
 module.exports = route;
