@@ -4,6 +4,8 @@
   --heading-color: #000000e0;
   --secondary-color: #000000a6;
   --text-color: #000000e0;
+  --disabled-color: #00000040;
+  --defaultBorder-color: #d9d9d9ff;
 }
 
 $geekblue-1: #e2ebfd;
@@ -18,8 +20,8 @@ $white: #fff;
 $heading-color: var(--heading-color);
 $secondary-color: var(--secondary-color);
 $text-color: var(--text-color);
-$disabled-color: #00000040;
-$defaultBorder-color: #d9d9d9ff;
+$disabled-color: var(--disabled-color);
+$defaultBorder-color: var(--defaultBorder-color);
 $seperator-color: #0505050f;
 $layoutBackground-color: #f5f5f5ff;
 

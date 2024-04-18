@@ -44,9 +44,11 @@ function App() {
   const root = document.documentElement;
   root.style.setProperty("--background-color", darkMode ? "#2f2f2f " : "");
   root.style.setProperty("--background-color1", darkMode ? "#3d3d3d" : "");
-  root.style.setProperty("--heading-color", darkMode ? "#ffffff" : "");
-  root.style.setProperty("--secondary-color", darkMode ? "#fafafa" : "");
-  root.style.setProperty("--text-color", darkMode ? "#f5f5f5" : "");
+  root.style.setProperty("--heading-color", darkMode ? "#FFFFFFD9" : "");
+  root.style.setProperty("--secondary-color", darkMode ? "#FFFFFFA6" : "");
+  root.style.setProperty("--text-color", darkMode ? "#FFFFFFD9" : "");
+  root.style.setProperty("--disabled-color", darkMode ? "#FFFFFF40" : "");
+  root.style.setProperty("--defaultBorder-color", darkMode ? "#FFFFFF40" : "");
   return (
     <div className="App">
       <Routes>

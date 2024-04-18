@@ -81,6 +81,7 @@ export default function Friends() {
   return (
     <Space direction="vertical" style={{ display: "flex", width: "100%" }}>
       <Breadcrumb
+        className="breadcrumb"
         items={[
           {
             title: <Link to="/">Home</Link>,

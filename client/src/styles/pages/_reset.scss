@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     img {
       width: 8rem;
       @media only screen and (max-width: 900px) {
@@ -26,7 +27,7 @@
     justify-content: center;
   }
   &__box {
-    background-color: #fff;
+    background-color: $background-color1;
     width: 40%;
     border-radius: 0.5rem;
     margin-top: 10rem;
@@ -52,9 +53,10 @@
     }
 
     &-header {
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid $defaultBorder-color;
       h4 {
         padding: 1rem;
+        color: $heading-color;
         @media only screen and (max-width: 1000px) {
           font-size: 1.2rem;
         }
@@ -64,8 +66,9 @@
       padding: 1rem;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid $defaultBorder-color;
       grid-gap: 2rem;
+      color: $text-color;
       @media only screen and (max-width: 750px) {
         grid-template-columns: repeat(1, 1fr);
       }
@@ -104,7 +107,7 @@
     &-body {
       &-input {
         padding: 1rem;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $defaultBorder-color;
         p {
           margin-bottom: 1rem;
         }

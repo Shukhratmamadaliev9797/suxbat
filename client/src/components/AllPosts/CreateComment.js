@@ -141,6 +141,7 @@ export default function CreateComment({ postId, setCount, setComments }) {
             placeholder="Write a comment..."
             onChange={(e) => setText(e.target.value)}
             onKeyUp={handleComment}
+            required
           />
           <div className="posts__post-createComment-input-icons">
             {loadingComment && <Loader3 color="blue" />}

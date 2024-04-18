@@ -1,6 +1,6 @@
 .createPostHome {
   &__container {
-    background-color: $white;
+    background-color: $background-color1;
     border-radius: 0.5rem;
     box-shadow: $box-shadow;
     padding: 1rem;
@@ -56,6 +56,7 @@
     &-item {
       display: flex;
       align-items: center;
+      color: $secondary-color;
       @media only screen and (max-width: "400px") {
         &:nth-child(3) {
           display: none;
@@ -72,4 +73,8 @@
       }
     }
   }
+}
+
+.fa-pencil-alt {
+  color: $secondary-color !important;
 }

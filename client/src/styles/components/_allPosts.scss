@@ -222,6 +222,7 @@
       padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
+      color: $secondary-color;
       &-reacts {
         display: flex;
         align-items: center;
@@ -235,10 +236,9 @@
     &-action {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-
       padding: 1rem 1.5rem;
-      border-top: 1px solid #f1f0f0;
-      border-bottom: 1px solid #f1f0f0;
+      border-top: 1px solid $defaultBorder-color;
+      border-bottom: 1px solid $defaultBorder-color;
       position: relative;
       &-like {
         display: flex;
@@ -247,6 +247,7 @@
         cursor: pointer;
         span {
           margin-left: 0.5rem;
+          color: $secondary-color;
         }
       }
     }
@@ -304,7 +305,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid #f1f0f0;
+        border: 1px solid $defaultBorder-color;
         border-radius: 1.5rem;
         overflow: hidden;
 
@@ -312,10 +313,12 @@
           padding: 0.5rem 0.5rem 0.5rem 1rem;
           border: none;
           width: 100%;
+          background-color: $background-color;
         }
         &-icons {
           display: flex;
           align-items: center;
+          background-color: $background-color;
         }
         &-icon {
           margin-right: 0.8rem;

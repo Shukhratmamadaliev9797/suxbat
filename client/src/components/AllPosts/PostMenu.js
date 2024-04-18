@@ -122,7 +122,7 @@ export default function PostMenu({
         arrow
         className="post__menu"
       >
-        <Button>
+        <Button className="post__menu-btn">
           <i className="fas fa-ellipsis-h"></i>
         </Button>
       </Dropdown>
