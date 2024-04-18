@@ -13,3 +13,57 @@
     padding: 1rem;
   }
 }
+
+.groupHeader {
+  background: $background-color1;
+  box-shadow: $box-shadow;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 1rem 1rem 0;
+  &__cover {
+    width: 100%;
+    border-radius: 0.5rem;
+    position: relative;
+    &-changeBtn {
+      position: absolute;
+      right: 2rem;
+      bottom: 2rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      color: #fff;
+      background: rgba($color: #000000, $alpha: 0.3);
+      span {
+        margin-left: 0.3rem;
+      }
+    }
+    img {
+      width: 100%;
+
+      object-fit: cover;
+    }
+  }
+  &__title {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__members {
+    padding: 0rem 2rem 1rem;
+  }
+  &__navbar {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    li {
+      margin-right: 4rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      span {
+        cursor: pointer;
+        color: #494949;
+      }
+    }
+  }
+}
