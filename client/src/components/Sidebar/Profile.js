@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserFriendsInfo } from "../../actions/userAction";
 import { Avatar } from "antd";
+import { Link } from "react-router-dom";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -24,18 +25,25 @@ export default function Profile() {
       ) : (
         <>
           <div className="sidebar__profile-img">
-            <Avatar
-              className="sidebar__profile-img-avatar"
-              shape="round"
-              size={60}
-              src={user.picture}
-            />
-            <div className="sidebar__profile-name">
-              <span>
-                {user.first_name} {total > 20 ? <br /> : ""} {user.last_name}
-              </span>
-              {total > 20 ? "" : <span>{user.username}</span>}
-            </div>
+            <Link
+              to={`/profile/${user?.username}`}
+              className="home__freindsSuggestion-friend-img"
+            >
+              <Avatar
+                className="sidebar__profile-img-avatar"
+                shape="round"
+                size={60}
+                src={user.picture}
+              />
+              <div className="sidebar__profile-name">
+                <span>
+                  {user.first_name} {total > 20 ? <br /> : ""} {user.last_name}
+                </span>
+                {total > 20 ? "" : <span>{user.username}</span>}
+              </div>
+
+            </Link>
+
           </div>
           <ul className="sidebar__profile-info">
             <li>

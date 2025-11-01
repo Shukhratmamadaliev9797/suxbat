@@ -7,7 +7,7 @@ export default function Friends({ friends }) {
     <div className="home__friends">
       <div className="home__friends-title">
         <h6>Friends</h6>
-        <Link>See all</Link>
+        <Link to="/friends">See all</Link>
       </div>
       <div className="home__friends-friends">
         {friends?.map((friend, i) => {

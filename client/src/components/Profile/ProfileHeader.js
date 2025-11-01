@@ -272,7 +272,7 @@ export default function ProfileHeader({
         <li onClick={() => setProfilePage(3)}>
           <span>Photos</span>
         </li>
-        <li>
+        <li onClick={() => setProfilePage(4)}>
           <span>Groups</span>
         </li>
         <li>

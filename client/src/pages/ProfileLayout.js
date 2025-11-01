@@ -6,6 +6,7 @@ import { detailsProfile } from "../actions/userAction";
 import ProfileHeader from "../components/Profile/ProfileHeader";
 import ProfileAbout from "../components/Profile/ProfileAbout";
 import ProfilePosts from "../components/Profile/ProfilePosts";
+import ProfileGroups from "../components/Profile/ProfileGroups";
 import { POST_CREATE_RESET } from "../constants/postConstants";
 import ProfileImages from "../components/Profile/ProfileImages";
 import { listImages } from "../actions/uploadImages";
@@ -119,9 +120,9 @@ export default function ProfileLayout() {
                 <ProfileFriends visitor={visitor} />
               ) : profilePage == 3 ? (
                 <ProfileImages userName={userName} photos={photos} />
-              ) : (
-                ""
-              )}
+              ) : profilePage == 4 ? (
+                <ProfileGroups />
+              ) : null}
             </>
           )}
         </div>

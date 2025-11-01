@@ -1,0 +1,51 @@
+.profile {
+  &__imagesContainer {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-shadow: $box-shadow;
+    h5 {
+      margin-bottom: 1rem;
+    }
+    &-profilePhotos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+
+      img {
+        width: 15rem;
+        height: 15rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+    }
+    &-coverPhotos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+
+      img {
+        width: 20rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+    }
+    &-postPhotos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      img {
+        width: 12rem;
+        height: 12rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+}

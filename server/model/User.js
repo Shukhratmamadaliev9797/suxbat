@@ -97,27 +97,35 @@ const userSchema = mongoose.Schema(
     details: {
       bio: {
         type: String,
+        default: "Add your bio",
       },
       job: {
         type: String,
+        default: "Add your job",
       },
       workplace: {
         type: String,
+        default: "Add your workplace",
       },
       highSchool: {
         type: String,
+        default: "Add your high school",
       },
       college: {
         type: String,
+        default: "Add your college",
       },
       university: {
         type: String,
+        default: "Add your university",
       },
       address: {
         type: String,
+        default: "Add your address",
       },
       country: {
         type: String,
+        default: "Add your country",
       },
       relationship: {
         type: String,
@@ -125,16 +133,20 @@ const userSchema = mongoose.Schema(
       },
       instagram: {
         type: String,
+        default: "Add your instagram",
       },
       linkedin: {
         type: String,
+        default: "Add your linkedin",
       },
 
       mobileNumber: {
         type: String,
+        default: "Add your mobile number",
       },
       homeNumber: {
         type: String,
+        default: "Add your home number",
       },
     },
   },

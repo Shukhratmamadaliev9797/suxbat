@@ -11,5 +11,11 @@
       height: 10rem !important;
       object-fit: cover;
     }
+    &-unfriendBtn {
+      color: red !important;
+    }
+    &-friendProfileBtn {
+      color: $geekblue-4 !important;
+    }
   }
 }

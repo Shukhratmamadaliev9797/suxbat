@@ -184,7 +184,7 @@ export default function EditProfileDetails({
                     <textarea
                       placeholder="Add Bio"
                       name="bio"
-                      value={bio}
+                      value={bio === "Add your bio" ? "" : bio}
                       onChange={handleUpdateChange}
                     />
                   </div>
@@ -264,7 +264,8 @@ export default function EditProfileDetails({
                       placeholder="Enter address"
                       type="text"
                       name="address"
-                      value={address}
+                      value={address === "Add your address" ? "" : address
+                      }
                       onChange={handleUpdateChange}
                     />
                   </div>
@@ -275,7 +276,7 @@ export default function EditProfileDetails({
                         placeholder="Enter Country"
                         type="text"
                         name="country"
-                        value={country}
+                        value={country === "Add your country" ? "" : country}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -305,7 +306,7 @@ export default function EditProfileDetails({
                         placeholder="Enter High school"
                         type="text"
                         name="highSchool"
-                        value={highSchool}
+                        value={highSchool === "Add your high school" ? "" : highSchool}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -315,7 +316,7 @@ export default function EditProfileDetails({
                         placeholder="Enter college"
                         type="text"
                         name="college"
-                        value={college}
+                        value={college === "Add your college" ? "" : college}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -325,7 +326,7 @@ export default function EditProfileDetails({
                         placeholder="Enter university"
                         type="text"
                         name="university"
-                        value={university}
+                        value={university === "Add your university" ? "" : university}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -337,7 +338,7 @@ export default function EditProfileDetails({
                         placeholder="Enter job position"
                         type="text"
                         name="job"
-                        value={job}
+                        value={job === "Add your job" ? "" : job}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -347,7 +348,7 @@ export default function EditProfileDetails({
                         placeholder="Enter workplace"
                         type="text"
                         name="workplace"
-                        value={workplace}
+                        value={workplace === "Add your workplace" ? "" : workplace}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -359,7 +360,7 @@ export default function EditProfileDetails({
                         placeholder="Enter home number"
                         type="text"
                         name="homeNumber"
-                        value={homeNumber}
+                        value={homeNumber === "Add your home number" ? "" : homeNumber}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -369,7 +370,7 @@ export default function EditProfileDetails({
                         placeholder="Enter mobile number"
                         type="text"
                         name="mobileNumber"
-                        value={mobileNumber}
+                        value={mobileNumber === "Add your mobile number" ? "" : mobileNumber}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -381,7 +382,7 @@ export default function EditProfileDetails({
                         placeholder="Instagram username"
                         type="text"
                         name="instagram"
-                        value={instagram}
+                        value={instagram === "Add your instagram" ? "" : instagram}
                         onChange={handleUpdateChange}
                       />
                     </div>
@@ -391,7 +392,7 @@ export default function EditProfileDetails({
                         placeholder="Linkedin username"
                         type="text"
                         name="linkedin"
-                        value={linkedin}
+                        value={linkedin === "Add your linkedin" ? "" : linkedin}
                         onChange={handleUpdateChange}
                       />
                     </div>

@@ -1,5 +1,6 @@
 .editProfileDetails {
   padding: 1.5rem;
+
   input,
   select,
   textarea {
@@ -8,36 +9,42 @@
     border: 1px solid #ddd;
     border-radius: 0.5rem;
   }
+
   label {
     margin-bottom: 0.5rem;
   }
+
   &__input {
     display: flex;
     flex-direction: column;
   }
+
   &__inputBox1 {
     display: grid;
     flex-direction: column;
     margin-bottom: 1rem;
   }
+
   &__inputBox2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     margin-bottom: 1rem;
   }
+
   &__inputBox3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
     margin-bottom: 1rem;
   }
+
   &__btn {
     button {
       width: 100%;
       padding: 0.3rem;
       border-radius: 0.5rem;
-      // background-color: $lighterPrimary-color;
+      background-color: $geekblue-3;
       color: #fff;
       text-align: center;
       display: flex;

@@ -21,6 +21,7 @@
 @import "./modal/uploadImage";
 @import "./modal/coverPhotos";
 @import "./components/Profile/about";
+@import "./components/Profile/images";
 @import "./modal/editProfileDetails";
 @import "./components/Post/post";
 @import "./components/Story/story";
@@ -34,7 +35,7 @@
 @import "./pages/messenger";
 @import "./pages/groups";
 @import "./modal/modal";
-
+@import "./components/Profile/friends";
 @import "./components/Group/groupPosts";
 @import "./components/Group/groupMember";
 @import "./general/helper";
