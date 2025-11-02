@@ -235,7 +235,7 @@ export default function Friends() {
                   ? "loading"
                   : error
                   ? error
-                  : localSentRequests.length
+                  : localSentRequests?.length
                   ? localSentRequests?.map((request) => {
                       return (
                         <Card

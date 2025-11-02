@@ -89,8 +89,8 @@ export default function Products() {
             {yourProducts.slice(0, 5).map((product) => {
               return (
                 <div className="marketplace__products-product">
+                  <img src={product.images[0].url} alt="" />
                   <Link to={`/products/${product._id}`}>
-                    <img src={product.images[0].url} alt="" />
                     <div className="marketplace__products-product-content">
                       <h6>{product.title}</h6>
                       <span>{product.price} £</span>
@@ -140,8 +140,8 @@ export default function Products() {
             {products.slice(0, 20).map((product) => {
               return (
                 <div className="marketplace__products-product">
+                  <img src={product.images[0].url} alt="" />
                   <Link to={`/products/${product._id}`}>
-                    <img src={product.images[0].url} alt="" />
                     <div className="marketplace__products-product-content">
                       <h6>{product.title}</h6>
                       <span>{product.price} £</span>
