@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import Loader1 from "../components/Loaders/Loader1";
 import InputForm from "../components/Inputs/InputForm";
-import { Space } from "antd";
+import { Alert, Space } from "antd";
 import Title from "../components/Typography/Title";
 import PrButton from "../components/Buttons/PrButton";
 import { USER_PASSWORD_CHANGE_RESET } from "../constants/userConstants";
@@ -139,6 +139,14 @@ export default function Login() {
               </Formik>
               <div className="login__form-donthave">
                 Dont have account <Link to="/register">Register</Link>
+              </div>
+              <div className="login__example">
+                <Alert
+                  message="Login Example Credentials or You can Register"
+                  description="Email: daniel@gmail.com | Password: 123456"
+                  type="info"
+                  showIcon
+                />
               </div>
             </div>
           </div>

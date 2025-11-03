@@ -115,3 +115,9 @@ textarea {
   border: $defaultBorder-color 1px solid !important;
   background: $background-color1 !important;
 }
+
+.login__example {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}

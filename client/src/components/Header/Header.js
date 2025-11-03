@@ -164,11 +164,13 @@ export default function Header({ notificationCount }) {
           </Avatar>
         </div>
         <div className="header__profile-item">
-          <Badge count={notificationCount}>
-            <Avatar shape="square" size="large">
-              <i className="fab fa-facebook-messenger header__profile-item-icon"></i>
-            </Avatar>
-          </Badge>
+          <Link to="/messenger">
+            <Badge count={notificationCount}>
+              <Avatar shape="square" size="large">
+                <i className="fab fa-facebook-messenger header__profile-item-icon"></i>
+              </Avatar>
+            </Badge>
+          </Link>
         </div>
         {!userInfo ? (
           <div className="header__profile-login">
